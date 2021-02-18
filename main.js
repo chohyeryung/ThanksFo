@@ -8,8 +8,10 @@ const db=require('./lib/db');
 const ejs=require('ejs');
 
 app.use(bodyParser.urlencoded({ extended: false }))
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'));
+app.use('/static', express.static(__dirname + '/public'));
+
 
 app.get('/', function(request, response){
     // response.render('index.ejs');
@@ -36,5 +38,9 @@ app.post('/join_process', function(request, response){
 app.post('/login_process', function(request, response){
     user.login(request, response);
 });
+
+app.get('/home', function(request, response){
+    response.render('home.ejs');
+})
 
 app.listen(3000);
