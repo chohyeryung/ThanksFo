@@ -21,9 +21,14 @@ body{
     padding:0;
 }
 
+.login_form .login{
+    padding-left:20px;
+}
+
 .login_form .login_btn{
     border-radius:50px;
     border:none;
     height:70px;
     margin-top:50px;
+    width:105%:
 }
