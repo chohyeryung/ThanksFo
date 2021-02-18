@@ -5,16 +5,19 @@ const qs = require('querystring');
 const bodyParser = require('body-parser');
 const user=require('./lib/user');
 const db=require('./lib/db');
+const ejs=require('ejs');
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'page')));
+// app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/views'));
 
 app.get('/', function(request, response){
-    response.sendFile(path.join(__dirname, 'page', 'index.html'));
+    // response.render('index.ejs');
+    response.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 app.get('/join', function(request, response){
-    response.sendFile(path.join(__dirname, 'page', 'join.html'));
+    response.sendFile(path.join(__dirname, 'views', 'join.html'));
 });
 
 app.post('/join_process', function(request, response){
