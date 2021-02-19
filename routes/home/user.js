@@ -1,4 +1,4 @@
-const db=require('../../lib/db');
+const db=require('../lib/db');
 
 exports.login=function(request, response){
     // let email=request.body.email;
