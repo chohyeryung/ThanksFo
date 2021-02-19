@@ -1,4 +1,14 @@
 .logo{
     width:100px;
     height:100px;
+    margin:20px;
+}
+
+.nav-container{
+    display:flex;
+    position:absolute;
+    right:10%;
+    width:200px;
+    justify-content: space-between;
+    top:5%;
 }
