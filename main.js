@@ -6,6 +6,21 @@ const bodyParser = require('body-parser');
 const user=require('./lib/user');
 const db=require('./lib/db');
 const ejs=require('ejs');
+const session=require('express-session');
+const MySQLStore=require('express-mysql-session')(session);
+
+app.use(session({
+    secret:'Secret',
+    resave:false,
+    saveUninitialized:true,
+    store:new MySQLStore({
+        host:'localhost',
+        port:3306,
+        user:'root',
+        password:'111111',
+        database:'opentutorials'
+    })
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
@@ -17,12 +32,12 @@ app.get('/', function(request, response){
     // response.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/join', function(request, response){
+app.get('/user/join', function(request, response){
     // response.sendFile(path.join(__dirname, 'views', 'join.html'));
     response.render('join.ejs');
 });
 
-app.post('/join_process', function(request, response){
+app.post('/user/join_process', function(request, response){
     let name=request.body.name;
     let email=request.body.email;
     let password=request.body.password;
@@ -35,7 +50,7 @@ app.post('/join_process', function(request, response){
     });
 });
 
-app.post('/login_process', function(request, response){
+app.post('/user/login_process', function(request, response){
     user.login(request, response);
 });
 
