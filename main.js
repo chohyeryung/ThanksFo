@@ -37,7 +37,7 @@ app.get('/', function(request, response){
     /*
         밑의 쿠키 코드를 추가하니(자동로그인을 위한)
         Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-        이런 에러가 남
+        이런 에러가 납니다.. 어떻게 해결하면 좋을까요?
     */
     // let cookies=request.cookies;
     // if (cookies) {
