@@ -36,6 +36,9 @@ router.post('/join_process', function(request, response) {
 router.post('/login_process', function(request, response){
     var email=request.body.email;
     var password=request.body.password;
+    /*
+        쿠키 있는지 없는지
+    */
     db.query('SELECT * FROM user WHERE email = ?', [email],
     function( error, results, fields) {
         if (error) {
