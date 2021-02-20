@@ -6,9 +6,18 @@
 
 .nav-container{
     display:flex;
-    position:absolute;
-    right:10%;
     width:200px;
-    justify-content: space-between;
+    position: absolute;
+    right:10%;
     top:5%;
+    justify-content: space-between;
+}
+
+.nav-container h3{
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+    color:black;
 }

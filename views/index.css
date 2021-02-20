@@ -47,3 +47,9 @@ body{
     text-decoration: none;
     color:black;
 }
+
+h3{
+    color:darkred;
+    font-weight: bold;
+    text-align: center;
+}

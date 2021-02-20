@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="/index.css">
     <title>Document</title>
 </head>
 <body>
     <div class="container">
-        <form action="/user/login_process" method="post" class="login_form">
+        <form action="/auth/login_process" method="post" class="login_form">
+            <h3><%=message%></h3>
             <input type="email" name="email" placeholder="이메일" required class="login email">
             <input type="password" name="password" placeholder="비밀번호" required class="login pw">
             <input type="submit" value="로그인" class="login_btn">
-            <a href="/user/join"><h5>회원가입</h5></a>
+            <a href="/auth/join"><h5>회원가입</h5></a>
         </form>
     </div>
 </body>

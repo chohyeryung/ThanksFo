@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const user=require('./lib/user');
 const db=require('./lib/db');
 const ejs=require('ejs');
+const authRouter=require('./routes/auth');
 const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 
@@ -22,36 +23,16 @@ app.use(session({
     })
 }));
 
+app.use('/auth', authRouter);
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/views'));
 app.use(express.static('public'));
 
 app.get('/', function(request, response){
-    response.render('index.ejs');
+    response.render('index.ejs', {message:'안녕하세요.'});
     // response.sendFile(path.join(__dirname, 'views', 'index.html'));
-});
-
-app.get('/user/join', function(request, response){
-    // response.sendFile(path.join(__dirname, 'views', 'join.html'));
-    response.render('join.ejs');
-});
-
-app.post('/user/join_process', function(request, response){
-    let name=request.body.name;
-    let email=request.body.email;
-    let password=request.body.password;
-    db.query(`INSERT INTO user (nickname, email, password)
-    VALUES (?,?,?)`, [name, email, password], function(error, result){
-        if(error){
-            throw error;
-        }
-        response.redirect('/');
-    });
-});
-
-app.post('/user/login_process', function(request, response){
-    user.login(request, response);
 });
 
 app.get('/home/:name', function(request, response){
