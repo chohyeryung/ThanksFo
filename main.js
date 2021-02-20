@@ -4,6 +4,7 @@ const path = require("path");
 const qs = require('querystring');
 const bodyParser = require('body-parser');
 const user=require('./lib/user');
+const cookieParser = require('cookie-parser');
 const db=require('./lib/db');
 const ejs=require('ejs');
 const authRouter=require('./routes/auth');
@@ -11,6 +12,7 @@ const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 
 app.use(session({
+    key:"sid",
     secret:'Secret',
     resave:false,
     saveUninitialized:true,
@@ -25,12 +27,22 @@ app.use(session({
 
 app.use('/auth', authRouter);
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
+app.use(cookieParser());
 app.use(express.static(__dirname + '/views'));
 app.use(express.static('public'));
 
 app.get('/', function(request, response){
+    /*
+        밑의 쿠키 코드를 추가하니(자동로그인을 위한)
+        Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+        이런 에러가 남
+    */
+    // let cookies=request.cookies;
+    // if (cookies) {
+    //     response.redirect('/home');
+    // }
     response.render('index.ejs', {message:'안녕하세요.'});
     // response.sendFile(path.join(__dirname, 'views', 'index.html'));
 });

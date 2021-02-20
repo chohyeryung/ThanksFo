@@ -54,7 +54,7 @@ h3{
     text-align: center;
 }
 
-/* The container */
+/* 체크 박스, 로그인 상태 유지 글 한 줄 */
 .login_chk {
     display: block;
     position: relative;
@@ -69,7 +69,6 @@ h3{
     user-select: none;
   }
   
-  /* Hide the browser's default checkbox */
   .login_chk input {
     position: absolute;
     opacity: 0;
@@ -78,7 +77,6 @@ h3{
     width: 0;
   }
   
-  /* Create a custom checkbox */
   .checkmark {
     position: absolute;
     top: 0;
@@ -88,29 +86,27 @@ h3{
     background-color: #eee;
   }
   
-  /* On mouse-over, add a grey background color */
   .login_chk:hover input ~ .checkmark {
     background-color: #ccc;
   }
   
-  /* When the checkbox is checked, add a blue background */
   .login_chk input:checked ~ .checkmark {
     background-color: #35090d;
   }
   
-  /* Create the checkmark/indicator (hidden when not checked) */
+  /* 체크 안되었을 때 안표시 */
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
   
-  /* Show the checkmark when checked */
+  /* 체크 되면 checkmark 보이게 */
   .login_chk input:checked ~ .checkmark:after {
     display: block;
   }
   
-  /* Style the checkmark/indicator */
+  /* 체크 박스 하얀 체크 표시 */
   .login_chk .checkmark:after {
     left: 9px;
     top: 5px;
