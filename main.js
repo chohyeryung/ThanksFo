@@ -19,7 +19,7 @@ app.use(session({
         port:3306,
         user:'root',
         password:'111111',
-        database:'opentutorials'
+        database:'diary'
     })
 }));
 
@@ -35,9 +35,12 @@ app.get('/', function(request, response){
     // response.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.get('/home/:name', function(request, response){
-    let name=request.params.name;
-    response.render('home.ejs', {name:name});
+app.get('/home', function(request, response){
+    let user = request.session["user"];
+    let name = user.nickname;
+    response.render('home.ejs', {
+         name : name 
+    });
 })
 
 app.listen(3000);
