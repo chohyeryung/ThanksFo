@@ -75,40 +75,29 @@ router.post('/login_process', function(request, response){
                 "failed": "error ocurred"
             })
         } 
-        // # 이렇게 session, cookie 저장하는게 맞는건가요.??
-        // # 그 다음에 main.js에서 app.get('/') 부분에서 쿠키가 있으면..? 자동 로그인 되게 해야하나요
-        else if(chk){
-            if(results.length > 0) {    //그 이메일로 된 pw가 있다는 것
-                if(results[0].password == password) {
-                    // request.session.logined=true;
+        if(results.length > 0) {    //그 이메일로 된 pw가 있다는 것
+            if(results[0].password == password) {
+                if(chk){
                     response.cookie('user', results[0], {maxAge:10000});
+                    // request.session.logined=true;
                     request.session.user=results[0];
                     request.session.save(()=>{
                         //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
                     });
-                }else {
-                    response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
+                }else{
+                    request.session.user=results[0];
+                    request.session.save(()=>{
+                        //response.redirect('/home/'+results[0].nickname);
+                        response.redirect('/home');
+                    });
                 }
             } else {
                 response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
             }
         }else{
-            if(results.length > 0) {    //그 이메일로 된 pw가 있다는 것
-                if(results[0].password == password) {
-                    response.cookie('user', results[0], {maxAge:10000});
-                    request.session.user=results[0];
-                    request.session.save(()=>{
-                        //response.redirect('/home/'+results[0].nickname);
-                        response.redirect('/home');
-                    });
-                }else {
-                    response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
-                }
-            } else {
-                response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
-            }
-        }    
+            response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
+        } 
     });
 });
 
