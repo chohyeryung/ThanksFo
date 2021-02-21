@@ -40,16 +40,20 @@ app.get('/', function(request, response){
         이런 에러가 납니다.. 어떻게 해결하면 좋을까요?
     */
     // let cookies=request.cookies;
-    // if (cookies) {
+    // let session=request.session;
+    // if (cookies && session) {
     //     response.redirect('/home');
+    // }else{
+    //     console.log(request.session);
+        response.render('index.ejs', {message:'안녕하세요.'});
     // }
-    response.render('index.ejs', {message:'안녕하세요.'});
     // response.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 app.get('/home', function(request, response){
     let user = request.session["user"];
     let name = user.nickname;
+    console.log(request.session);
     response.render('home.ejs', {
          name : name 
     });

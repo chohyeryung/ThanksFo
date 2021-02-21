@@ -75,6 +75,8 @@ router.post('/login_process', function(request, response){
                 "failed": "error ocurred"
             })
         } 
+        // # 이렇게 session, cookie 저장하는게 맞는건가요.??
+        // # 그 다음에 main.js에서 app.get('/') 부분에서 쿠키가 있으면..? 자동 로그인 되게 해야하나요
         else if(chk){
             if(results.length > 0) {    //그 이메일로 된 pw가 있다는 것
                 if(results[0].password == password) {
@@ -113,9 +115,23 @@ router.post('/login_process', function(request, response){
 /* 로그아웃 로직 (session 삭제) 
 */
 router.get('/logout', function(request, response){
-    request.session.destroy();
-    // response.clearCookie('sid'); //쿠키 삭제 기능 구현 해야함..
-    response.redirect('/');
+    sess = request.session;
+    if(sess.user.idx){
+        request.session.destroy(function(err){
+            if(err){
+                console.log(err);
+            }else{
+                response.redirect('/');
+            }
+        })
+    }else{
+        response.redirect('/');
+    }
+    // request.session.destroy(function(err){
+    //     // cannot access session here
+    // });
+    // // response.clearCookie('sid'); //쿠키 삭제 기능 구현 해야함..
+    // response.redirect('/');
 });
 
 module.exports=router;
