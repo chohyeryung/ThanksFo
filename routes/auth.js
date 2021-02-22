@@ -67,18 +67,18 @@ router.post('/login_process', function(request, response){
     /*
         쿠키 있는지 없는지
     */
-    db.query('SELECT * FROM user WHERE email = ?', [email],
-    function( error, results, fields) {
+    db.query('SELECT * FROM user WHERE email = ?', [email],function( error, results, fields) {
         if (error) {
             response.send({
                 "code": 400,
                 "failed": "error ocurred"
             })
-        } 
+        }
         if(results.length > 0) {    //그 이메일로 된 pw가 있다는 것
             if(results[0].password == password) {
                 if(chk){
-                    response.cookie('user', results[0], {maxAge:10000});
+                    console.log('chk!');
+                    response.cookie('remember', 1, {maxAge:10000});
                     // request.session.logined=true;
                     request.session.user=results[0];
                     request.session.save(()=>{
@@ -86,15 +86,16 @@ router.post('/login_process', function(request, response){
                         response.redirect('/home');
                     });
                 }else{
+                    console.log('no chk');
                     request.session.user=results[0];
                     request.session.save(()=>{
                         //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
                     });
                 }
-            } else {
+            }else{
                 response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
-            }
+            } 
         }else{
             response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
         } 
@@ -105,6 +106,7 @@ router.post('/login_process', function(request, response){
 */
 router.get('/logout', function(request, response){
     sess = request.session;
+    response.clearCookie('remember');
     if(sess.user.idx){
         request.session.destroy(function(err){
             if(err){
@@ -119,7 +121,7 @@ router.get('/logout', function(request, response){
     // request.session.destroy(function(err){
     //     // cannot access session here
     // });
-    // // response.clearCookie('sid'); //쿠키 삭제 기능 구현 해야함..
+    // // response.clearCookie('sid'); 
     // response.redirect('/');
 });
 

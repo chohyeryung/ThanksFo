@@ -35,25 +35,39 @@ app.use(express.static('public'));
 
 app.get('/', function(request, response){
     /*
-        밑의 쿠키 코드를 추가하니(자동로그인을 위한)
-        Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-        이런 에러가 납니다.. 어떻게 해결하면 좋을까요?
+       . 
     */
     // let cookies=request.cookies;
-    // let session=request.session;
-    // if (cookies && session) {
-    //     response.redirect('/home');
-    // }else{
-    //     console.log(request.session);
+    let session=request.session;
+    console.log(request.cookies.remember);
+    if (request.cookies.remember) {
+        session.save(()=>{
+            session.cookie=request.cookies.remember;
+            console.log('remember');
+            response.redirect('/home');
+        });
+    }else{
+        console.log('no');
         response.render('index.ejs', {message:'안녕하세요.'});
-    // }
+    }
     // response.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
+// app.post('/', function(request, response){
+//     if(request.body.remember){
+//         response.cookie('remember', 1, {maxAge:minute});
+//         response.redirect('');
+//     }else{
+        
+//     }
+// });
+
 app.get('/home', function(request, response){
-    let user = request.session["user"];
-    let name = user.nickname;
     console.log(request.session);
+    let user = request.session["user"];
+    console.log(user);
+    let name = user.nickname;
+    console.log(request.cookies.user);
     response.render('home.ejs', {
          name : name 
     });
