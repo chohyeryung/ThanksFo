@@ -44,8 +44,6 @@ app.get('/', function(request, response){
             //session.cookie=request.cookies.loginId;
             response.redirect('/home');
         });
-        //console.log(response.cookie);
-        //[Function (anonymous)]
     }else{
         response.render('index.ejs', {message:'안녕하세요.'});
     }
@@ -68,7 +66,6 @@ app.get('/home', function(request, response){
     response.render('home.ejs', {
          name : name 
     });
-    //console.log(request.session);
 });
 
 app.listen(3000);
