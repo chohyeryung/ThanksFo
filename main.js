@@ -62,7 +62,7 @@ app.get('/', function(request, response){
 // });
 
 app.get('/home', function(request, response){
-    let user = request.session["user"];
+    let user = request.session.user;
     let name = user.nickname;
     
     response.render('home.ejs', {

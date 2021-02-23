@@ -106,8 +106,8 @@ router.post('/login_process', function(request, response){
 */
 router.get('/logout', function(request, response){
     sess = request.session;
-    response.clearCookie('remember');
-    if(sess.user.idx){
+    response.clearCookie('loginId');
+    // if(sess.user.idx){
         request.session.destroy(function(err){
             if(err){
                 console.log(err);
@@ -115,9 +115,9 @@ router.get('/logout', function(request, response){
                 response.redirect('/');
             }
         })
-    }else{
-        response.redirect('/');
-    }
+    // }else{
+    //     response.redirect('/');
+    // }
     // request.session.destroy(function(err){
     //     // cannot access session here
     // });
