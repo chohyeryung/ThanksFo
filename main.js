@@ -39,15 +39,13 @@ app.get('/', function(request, response){
     */
     // let cookies=request.cookies;
     let session=request.session;
-    console.log(request.cookies.remember);
-    if (request.cookies.remember) {
+    //console.log(request.cookies.remeber);
+    if (request.cookies.loginId) {
         session.save(()=>{
-            session.cookie=request.cookies.remember;
-            console.log('remember');
+            session.cookie=request.cookies.loginId;
             response.redirect('/home');
         });
     }else{
-        console.log('no');
         response.render('index.ejs', {message:'안녕하세요.'});
     }
     // response.sendFile(path.join(__dirname, 'views', 'index.html'));
@@ -63,14 +61,13 @@ app.get('/', function(request, response){
 // });
 
 app.get('/home', function(request, response){
-    console.log(request.session);
     let user = request.session["user"];
-    console.log(user);
     let name = user.nickname;
-    console.log(request.cookies.user);
+    
     response.render('home.ejs', {
          name : name 
     });
+    //console.log(request.session);
 })
 
 app.listen(3000);

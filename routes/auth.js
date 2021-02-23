@@ -78,13 +78,22 @@ router.post('/login_process', function(request, response){
             if(results[0].password == password) {
                 if(chk){
                     console.log('chk!');
-                    response.cookie('remember', 1, {maxAge:10000});
-                    // request.session.logined=true;
+                    /*
+                        # node를 실행하니
+                        TypeError: Cannot create property 'maxAge' on string '5'
+                        이렇게 뜹니다.
+
+                        #96번째 줄 request.cookies를 찍어도 undefined라고 뜹니다.
+
+                    */
+                    response.cookie('loginId', results[0].idx, {maxAge:100000});
+
                     request.session.user=results[0];
                     request.session.save(()=>{
                         //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
                     });
+                    console.log(request.cookies);
                 }else{
                     console.log('no chk');
                     request.session.user=results[0];
