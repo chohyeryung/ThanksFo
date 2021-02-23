@@ -86,14 +86,13 @@ router.post('/login_process', function(request, response){
                         #96번째 줄 request.cookies를 찍어도 undefined라고 뜹니다.
 
                     */
-                    response.cookie('loginId', results[0].idx, {maxAge:100000});
+                    response.cookie('loginId', results[0].idx);
 
                     request.session.user=results[0];
                     request.session.save(()=>{
                         //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
                     });
-                    console.log(request.cookies);
                 }else{
                     console.log('no chk');
                     request.session.user=results[0];

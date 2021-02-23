@@ -39,8 +39,8 @@ app.get('/', function(request, response){
     */
     // let cookies=request.cookies;
     let session=request.session;
-    //console.log(request.cookies.remeber);
     if (request.cookies.loginId) {
+        console.log(session);
         session.save(()=>{
             session.cookie=request.cookies.loginId;
             response.redirect('/home');
