@@ -40,11 +40,12 @@ app.get('/', function(request, response){
     // let cookies=request.cookies;
     let session=request.session;
     if (request.cookies.loginId) {
-        console.log(session);
         session.save(()=>{
-            session.cookie=request.cookies.loginId;
+            //session.cookie=request.cookies.loginId;
             response.redirect('/home');
         });
+        //console.log(response.cookie);
+        //[Function (anonymous)]
     }else{
         response.render('index.ejs', {message:'안녕하세요.'});
     }
@@ -68,6 +69,6 @@ app.get('/home', function(request, response){
          name : name 
     });
     //console.log(request.session);
-})
+});
 
 app.listen(3000);
