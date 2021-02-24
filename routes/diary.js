@@ -4,9 +4,9 @@ const app=express();
 const bodyParser = require('body-parser');
 const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
-var qs = require('querystring');
 const cookieParser = require('cookie-parser');
 const db = require('../lib/db');
+const template = require('../lib/template');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
@@ -36,4 +36,26 @@ router.post('/create_process', function(request, response){
     });
 });
 
+router.get('/show', function(request, response){
+    const query1="SELECT * FROM thdiary";
+    const query2="SELECT * FROM thdiary WHERE user_id=?";
+    let uid=request.session.user.idx;
+    db.query(query1, function(error, diarys){
+        if (error) {
+            throw error;
+        }
+        db.query(query2, [uid], function(error2, diary){
+            if (error2) {
+                throw error2;
+            }
+            var des1=diary[0].description1;
+            var des2=diary[0].description1;
+            var des3=diary[0].description1;
+            var created=diary[0].created;
+            // var diary=template.DIARY(diary);
+            // response.end(diary);
+            // response.render('show.ejs', {diary : diary});
+        });
+    });
+});
 module.exports=router;
