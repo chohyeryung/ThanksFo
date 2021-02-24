@@ -3,11 +3,11 @@ const app=express();
 const path = require("path");
 const qs = require('querystring');
 const bodyParser = require('body-parser');
-const user=require('./lib/user');
 const cookieParser = require('cookie-parser');
 const db=require('./lib/db');
 const ejs=require('ejs');
 const authRouter=require('./routes/auth');
+const diaryRouter=require('./routes/diary');
 const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 
@@ -26,6 +26,7 @@ app.use(session({
 }));
 
 app.use('/auth', authRouter);
+app.use('/diary', diaryRouter);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
@@ -37,10 +38,9 @@ app.get('/', function(request, response){
     /*
        . 
     */
-    // let cookies=request.cookies;
-    let session=request.session;
+    // let cookies=request.cookies;\
     if (request.cookies.loginId) {
-        session.save(()=>{
+        request.session.save(()=>{
             //session.cookie=request.cookies.loginId;
             response.redirect('/home');
         });
@@ -61,6 +61,7 @@ app.get('/', function(request, response){
 
 app.get('/home', function(request, response){
     let user = request.session.user;
+    console.log(request.session);
     let name = user.nickname;
     
     response.render('home.ejs', {

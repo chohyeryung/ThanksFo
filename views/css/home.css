@@ -6,15 +6,21 @@
 
 .nav-container{
     display:flex;
-    width:200px;
     position: absolute;
     right:10%;
     top:5%;
     justify-content: space-between;
 }
-
-.nav-container h3{
+.nav-container .menu{
     margin:0;
+    padding:20px;
+}
+
+.nav-container .diary{
+    padding-right:180px;
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
 }
 
 a{
