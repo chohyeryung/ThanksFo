@@ -20,4 +20,8 @@ router.get('/info', function(request, response){
     response.render('info.ejs');
 });
 
+router.post('/create_process', function(request, response){
+    response.send('hi');
+});
+
 module.exports=router;

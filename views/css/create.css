@@ -15,6 +15,35 @@ span{
 a{
     text-decoration: none;
     color:black;
-    margin-top:40px;
 }
 
+.thk_form{
+    display: flex;
+    flex-direction: column;
+    width:500px;
+    margin: 0 auto;
+}
+
+.thk_form textarea, input{
+    width:350px;
+    height:60px;
+    margin:10px;
+}
+
+::placeholder { 
+    font-size: 15px !important;
+  }
+
+.thk_form textarea{
+    border-radius: 20px;
+    font-size:17px;
+}
+
+.thk_form .thk{
+    padding:20px;
+}
+
+.thk_form .submit{
+    width:375px;
+    margin-top:60px;
+}

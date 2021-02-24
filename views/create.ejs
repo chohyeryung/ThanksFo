@@ -16,7 +16,13 @@
             <span class="show-word">감사의 습관이, <br>
             <span class="hidden-word">기적</span>을 만든다 .</span>
         </div>
-        <a href="/diary/info">감사일기가 뭔데 ?</a>
+        <span><a href="/diary/info">감사일기가 뭔데 ?</a></span>
+        <form action="/diary/create_process" method="POST" class="thk_form">
+            <textarea name="d1" cols="25" rows="5" required placeholder="행복은 바로 감사하는 마음이다" class="thk one"></textarea><br>
+            <textarea name="d2" cols="25" rows="5" required placeholder="죄 중의 죄는 감사하지 못하는 것이다" class="thk two"></textarea><br>
+            <textarea name="d3" cols="25" rows="5" required placeholder="갖지 못한 한 가지를 불평하기 보다, 가진 것 열가지에 감사하라" class="thk three"></textarea><br>
+            <input type="submit" class="submit" value="감사 적립">
+        </form>
     </div>
 </body>
 </html>
