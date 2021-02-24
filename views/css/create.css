@@ -1,3 +1,8 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
 span{
     font-size: 25px;
     font-weight: bold;
@@ -5,5 +10,11 @@ span{
 
 .show-word{
     cursor: pointer;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+    margin-top:40px;
 }
 
