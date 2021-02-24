@@ -25,14 +25,14 @@ app.use(session({
     })
 }));
 
-app.use('/auth', authRouter);
-app.use('/diary', diaryRouter);
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(express.static(__dirname + '/views'));
 app.use(express.static('public'));
+
+app.use('/auth', authRouter);
+app.use('/diary', diaryRouter);
 
 app.get('/', function(request, response){
     /*
