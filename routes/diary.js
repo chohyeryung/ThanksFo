@@ -48,13 +48,14 @@ router.get('/show', function(request, response){
             if (error2) {
                 throw error2;
             }
-            var des1=diary[0].description1;
-            var des2=diary[0].description1;
-            var des3=diary[0].description1;
-            var created=diary[0].created;
-            // var diary=template.DIARY(diary);
-            // response.end(diary);
-            // response.render('show.ejs', {diary : diary});
+            response.render('show.ejs', {result : diary});
+            // var des1=diary[0].description1;
+            // var des2=diary[0].description1;
+            // var des3=diary[0].description1;
+            // var created=diary[0].created;
+            // // var diary=template.DIARY(diary);
+            // // response.end(diary);
+            // // response.render('show.ejs', {diary : diary});
         });
     });
 });

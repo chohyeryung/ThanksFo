@@ -7,6 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    <%=diary.description1%>
+    <% if(result!=null && result.length > 0) { %>
+        <ul>
+            <% for(var i=0; i<result.length; i++) { %>
+                <li>
+                    <%=result[0].created%>
+                </li>
+                <li>
+                    <%=result[0].description1%>
+                </li>
+                <li>
+                    <%=result[0].description2%>
+                </li>
+                <li>
+                    <%=result[0].description3%>
+                </li>
+            <% } %>
+        </ul>
+    <% }else{ 
+        
+    }%>
 </body>
 </html>
