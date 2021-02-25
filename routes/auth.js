@@ -37,7 +37,7 @@ router.get('/join', function(request, response) {
  * 
  */
 router.post('/join_process', function(request, response) {
-    const query = "INSERT INTO user (nickname, email, password) VALUES (?,?,?)";
+    const query = `INSERT INTO user (nickname, email, password) VALUES (?,?,?)`;
     var name=request.body.name;
     var email=request.body.email;
     var password=request.body.password;
@@ -49,14 +49,6 @@ router.post('/join_process', function(request, response) {
     });
 });
 
-// router.get('/login_process', function(request, response){
-//     if(request.session.logined==true){
-//         response.redirect('/home');
-//     }else{
-//         response.render('index.ejs', {message:'안녕하세요.'});
-//     }
-// });
-
 /**
  * 로그인 로직을 실행
  */
@@ -67,7 +59,7 @@ router.post('/login_process', function(request, response){
     /*
         쿠키 있는지 없는지
     */
-    db.query('SELECT * FROM user WHERE email = ?', [email],function( error, results, fields) {
+    db.query(`SELECT * FROM user WHERE email = ?`, [email],function( error, results, fields) {
         if (error) {
             response.send({
                 "code": 400,
@@ -108,21 +100,13 @@ router.get('/logout', function(request, response){
     sess = request.session;
     response.clearCookie('loginId');
     // if(sess.user.idx){
-        request.session.destroy(function(err){
-            if(err){
-                console.log(err);
-            }else{
-                response.redirect('/');
-            }
-        })
-    // }else{
-    //     response.redirect('/');
-    // }
-    // request.session.destroy(function(err){
-    //     // cannot access session here
-    // });
-    // // response.clearCookie('sid'); 
-    // response.redirect('/');
+    request.session.destroy(function(err){
+        if(err){
+            console.log(err);
+        }else{
+            response.redirect('/');
+        }
+    });
 });
 
 module.exports=router;

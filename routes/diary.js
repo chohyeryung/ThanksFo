@@ -23,11 +23,12 @@ router.get('/info', function(request, response){
 });
 
 router.post('/insert_process', function(request, response){
-    const query="INSERT INTO thdiary (description1, description2, description3, created, user_id, tome) VALUES (?, ?, ?, ?, ?, ?)";
+    const query=`INSERT INTO thdiary (description1, description2, description3, created, user_id, tome) VALUES (?, ?, ?, ?, ?, ?)`;
     let des1=request.body.d1;
     let des2=request.body.d2;
     let des3=request.body.d3;
-    let created=new Date();
+    let now=new Date();
+    let created=now.slice(0,9);
     let uid=request.session.user.idx;
     let tome=request.body.tome;
     db.query(query, [des1, des2, des3, created, uid, tome], function(error, results){
@@ -39,8 +40,8 @@ router.post('/insert_process', function(request, response){
 });
 
 router.get('/getDiaries', function(request, response){
-    const query1 = "SELECT * FROM thdiary WHERE user_id=?";
-    const query2 = "SELECT * FROM thdiary WHERE created = (SELECT MAX(created) FROM thdiary)";
+    const query1 = `SELECT * FROM thdiary WHERE user_id=?`;
+    const query2 = `SELECT * FROM thdiary WHERE created = (SELECT created FROM thdiary GROUP BY created)`;
     let uid=request.session.user.idx;
     db.query(query1, [uid], function(error, diarys){
         if (error) {
@@ -56,7 +57,7 @@ router.get('/getDiaries', function(request, response){
 });
 
 router.post('/getDiaries_detail', function(request, response){
-    const query = "SELECT * FROM thdiary";
+    const query = `SELECT * FROM thdiary`;
     db.query(query, function(error, detail_diary){
         if (error) {
             throw error;
