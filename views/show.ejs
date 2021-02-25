@@ -4,26 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/show.css">
+    <title>감사일기 조회</title>
 </head>
 <body>
     <% if(result!=null && result.length > 0) { %>
-        <ul>
             <% for(var i=0; i<result.length; i++) { %>
-                <li>
-                    <%=result[i].created%>
-                </li>
-                <li>
-                    <%=result[i].description1%>
-                </li>
-                <li>
-                    <%=result[i].description2%>
-                </li>
-                <li>
-                    <%=result[i].description3%>
-                </li>
+                <ul class="show-con">
+                    <li class="created">
+                        <%= result[i].created.getFullYear() %>
+                        -
+                        <% if (( result[i].created.getMonth()+1 ) < 10) { %>
+                            0<%= result[i].created.getMonth()+1 %>
+                        <% }else { %>
+                            <%= result[i].created.getMonth()+1 %>
+                        <% } %>
+                        -
+                        <% if (( result[i].created.getDate() ) < 10) { %>
+                            0<%= result[i].created.getDate() %>
+                        <% }else { %>
+                            <%= result[i].created.getDate() %>
+                        <% } %>
+                    </li>
+                    <li>
+                        <%= result[i].description1 %>
+                    </li>
+                    <li>
+                        <%= result[i].description2 %>
+                    </li>
+                    <li>
+                        <%= result[i].description3 %>
+                    </li>
+                </ul>
             <% } %>
-        </ul>
     <% }else{ 
 
     }%>

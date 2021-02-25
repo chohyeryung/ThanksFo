@@ -23,12 +23,13 @@ router.get('/info', function(request, response){
 });
 
 router.post('/create_process', function(request, response){
-    const query="INSERT INTO thdiary (description1, description2, description3, created, user_id) VALUES (?, ?, ?, NOW(), ?)";
+    const query="INSERT INTO thdiary (description1, description2, description3, created, user_id) VALUES (?, ?, ?, ?, ?)";
     let des1=request.body.d1;
     let des2=request.body.d2;
     let des3=request.body.d3;
+    let created=new Date();
     let uid=request.session.user.idx;
-    db.query(query, [des1, des2, des3, uid], function(error, results){
+    db.query(query, [des1, des2, des3, created, uid], function(error, results){
         if (error) {
             throw error;
         }
