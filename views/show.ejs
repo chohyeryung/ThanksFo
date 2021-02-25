@@ -10,35 +10,38 @@
 <body>
     <% if(result!=null && result.length > 0) { %>
             <% for(var i=0; i<result.length; i++) { %>
-                <ul class="show-con">
-                    <li class="created">
-                        <%= result[i].created.getFullYear() %>
-                        -
-                        <% if (( result[i].created.getMonth()+1 ) < 10) { %>
-                            0<%= result[i].created.getMonth()+1 %>
-                        <% }else { %>
-                            <%= result[i].created.getMonth()+1 %>
-                        <% } %>
-                        -
-                        <% if (( result[i].created.getDate() ) < 10) { %>
-                            0<%= result[i].created.getDate() %>
-                        <% }else { %>
-                            <%= result[i].created.getDate() %>
-                        <% } %>
-                    </li>
-                    <li>
-                        <%= result[i].description1 %>
-                    </li>
-                    <li>
-                        <%= result[i].description2 %>
-                    </li>
-                    <li>
-                        <%= result[i].description3 %>
-                    </li>
-                    <li class="tome">
-                        <%= result[i].tome %>
-                    </li>
-                </ul>
+                <a href="/diary/show_detail">
+                    <ul class="show-con">
+                        <h2>Thank From.</h2> <br>
+                        <li class="created">
+                            <%= result[i].created.getFullYear() %>
+                            .
+                            <% if (( result[i].created.getMonth()+1 ) < 10) { %>
+                                0<%= result[i].created.getMonth()+1 %>
+                            <% }else { %>
+                                <%= result[i].created.getMonth()+1 %>
+                            <% } %>
+                            .
+                            <% if (( result[i].created.getDate() ) < 10) { %>
+                                0<%= result[i].created.getDate() %>
+                            <% }else { %>
+                                <%= result[i].created.getDate() %>
+                            <% } %>
+                        </li>
+                        <!-- <li>
+                            <%= result[i].description1 %>
+                        </li>
+                        <li>
+                            <%= result[i].description2 %>
+                        </li>
+                        <li>
+                            <%= result[i].description3 %>
+                        </li>
+                        <li class="tome">
+                            <%= result[i].tome %>
+                        </li> -->
+                    </ul>
+                </a>
             <% } %>
     <% }else{ 
 

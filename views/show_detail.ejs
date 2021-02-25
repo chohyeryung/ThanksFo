@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/show_detail.css">
+    <title>감사일기 조회</title>
+</head>
+<body>
+    <% if(result!=null && result.length > 0) { %>
+            <% for(var i=0; i<result.length; i++) { %>
+                <ul class="show-con">
+                    <li>
+                        <%= result[i].description1 %>
+                    </li>
+                    <li>
+                        <%= result[i].description2 %>
+                    </li>
+                    <li>
+                        <%= result[i].description3 %>
+                    </li>
+                    <li class="tome">
+                        <%= result[i].tome %>
+                    </li>
+                </ul>
+            <% } %>
+    <% }else{ 
+
+    }%>
+</body>
+</html>
