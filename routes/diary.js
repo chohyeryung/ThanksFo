@@ -23,13 +23,14 @@ router.get('/info', function(request, response){
 });
 
 router.post('/create_process', function(request, response){
-    const query="INSERT INTO thdiary (description1, description2, description3, created, user_id) VALUES (?, ?, ?, ?, ?)";
+    const query="INSERT INTO thdiary (description1, description2, description3, created, user_id, tome) VALUES (?, ?, ?, ?, ?, ?)";
     let des1=request.body.d1;
     let des2=request.body.d2;
     let des3=request.body.d3;
     let created=new Date();
     let uid=request.session.user.idx;
-    db.query(query, [des1, des2, des3, created, uid], function(error, results){
+    let tome=request.body.tome;
+    db.query(query, [des1, des2, des3, created, uid, tome], function(error, results){
         if (error) {
             throw error;
         }
@@ -50,13 +51,6 @@ router.get('/show', function(request, response){
                 throw error2;
             }
             response.render('show.ejs', {result : diary});
-            // var des1=diary[0].description1;
-            // var des2=diary[0].description1;
-            // var des3=diary[0].description1;
-            // var created=diary[0].created;
-            // // var diary=template.DIARY(diary);
-            // // response.end(diary);
-            // // response.render('show.ejs', {diary : diary});
         });
     });
 });

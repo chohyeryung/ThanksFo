@@ -8,6 +8,13 @@
 }
 
 .show-con .created{
-    margin-bottom:20px;
+    margin-top:-8px;
+    margin-bottom:10px;
     font-size:20px;
+}
+
+.show-con .tome{
+    margin-top:20px;
+    font-size:20px;
+    font-weight: bold;
 }
