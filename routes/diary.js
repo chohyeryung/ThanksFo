@@ -38,24 +38,19 @@ router.post('/insert_process', function(request, response){
 });
 
 router.get('/getDiaries', function(request, response){
-    const query1 = `SELECT DATE_FORMAT(created, '%Y-%m-%d') as date FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
+    const query = `SELECT DATE_FORMAT(created, '%Y-%m-%d') as date FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
     let uid=request.session.user.idx;
-    db.query(query1, [uid], function(error, diarys){
+    db.query(query, [uid], function(error, diarys){
         if (error) {
             throw error;
         }
-        // db.query(query2, function(error2, diary){
-        //     if (error2) {
-        //         throw error;
-        //     }
-        // console.log(diarys);
-            response.render('show.ejs', {result : diarys});
-        // });
+        response.render('show.ejs', {result : diarys});
     });
 });
 
 router.post('/getDiaries_detail', function(request, response){
-    const query = `SELECT * FROM thdiary`;
+    let date=request.body.hiddate;
+    const query = `SELECT * FROM thdiary WHERE created LIKE '${date}%'`;
     db.query(query, function(error, detail_diary){
         if (error) {
             throw error;
