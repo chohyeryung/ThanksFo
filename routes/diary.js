@@ -27,8 +27,7 @@ router.post('/insert_process', function(request, response){
     let des1=request.body.d1;
     let des2=request.body.d2;
     let des3=request.body.d3;
-    let now=new Date();
-    let created=now.slice(0,9);
+    let created=new Date();
     let uid=request.session.user.idx;
     let tome=request.body.tome;
     db.query(query, [des1, des2, des3, created, uid, tome], function(error, results){
