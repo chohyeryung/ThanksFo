@@ -38,7 +38,7 @@ router.post('/insert_process', function(request, response){
 });
 
 router.get('/getDiaries', function(request, response){
-    const query1 = `SELECT * FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
+    const query1 = `SELECT DATE_FORMAT(created, '%Y-%m-%d') as date FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
     let uid=request.session.user.idx;
     db.query(query1, [uid], function(error, diarys){
         if (error) {
@@ -48,8 +48,8 @@ router.get('/getDiaries', function(request, response){
         //     if (error2) {
         //         throw error;
         //     }
-        console.log(diarys);
-            //response.render('show.ejs', {result : diarys});
+        // console.log(diarys);
+            response.render('show.ejs', {result : diarys});
         // });
     });
 });

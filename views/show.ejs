@@ -14,25 +14,7 @@
                     <ul class="show-con">
                         <h2>Thank From.</h2> <br>
                         <li class="created">
-                            <% var year=result[i].created.getFullYear() %>
-                            <%= year %>
-                            .
-                            <% if (( result[i].created.getMonth()+1 ) < 10) { %>
-                                <% var month=String(0)+(result[i].created.getMonth()+1) %>
-                                <%= month %>
-                            <% }else { %>
-                                <% var month=result[i].created.getMonth()+1 %>
-                                <%= month %>
-                            <% } %>
-                            .
-                            <% if (( result[i].created.getDate() ) < 10) { %>
-                                <% var date=String(0)+(result[i].created.getDate() ) %>
-                                <%= date %>
-                            <% }else { %>
-                                <% var date=result[i].created.getDate() %>
-                                <%= date %>
-                            <% } %>
-                            <% var datestring=year+"-"+month+"-"+date %>
+                            <%= result[i].date %>
                         </li>
                     </ul>
                     <input type="submit" class="show-submit">
