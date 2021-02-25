@@ -58,18 +58,21 @@ router.get('/show', function(request, response){
 router.get('/show_detail', function(request, response){
     const query1="SELECT * FROM thdiary";
     const query2="SELECT * FROM thdiary WHERE user_id=?";
+    const query3="SELECT * FROM thdiary WHERE created=?";
     let uid=request.session.user.idx;
-    db.query(query1, function(error, diarys){
-        if (error) {
-            throw error;
-        }
-        db.query(query2, [uid], function(error2, diary){
-            if (error2) {
-                throw error2;
-            }
-            response.render('show_detail.ejs', {result : diary});
-        });
-    });
+    let created=request.body.created;
+    console.log(created);
+    // db.query(query1, function(error, diarys){
+    //     if (error) {
+    //         throw error;
+    //     }
+    //     db.query(query2, [uid], function(error2, diary){
+    //         if (error2) {
+    //             throw error2;
+    //         }
+    //         response.render('show_detail.ejs', {result : diary});
+    //     });
+    // });
 })
 
 module.exports=router;

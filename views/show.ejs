@@ -14,6 +14,7 @@
                     <ul class="show-con">
                         <h2>Thank From.</h2> <br>
                         <li class="created">
+                            <input type="hidden" name="created" value="<%= result[i].created %>">
                             <%= result[i].created.getFullYear() %>
                             .
                             <% if (( result[i].created.getMonth()+1 ) < 10) { %>
