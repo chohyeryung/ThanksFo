@@ -6,7 +6,6 @@ const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 const cookieParser = require('cookie-parser');
 const db = require('../lib/db');
-const date_format = require('dateformat');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
@@ -39,19 +38,19 @@ router.post('/insert_process', function(request, response){
 });
 
 router.get('/getDiaries', function(request, response){
-    const query1 = `SELECT * FROM thdiary WHERE user_id=?`;
-    const query2 = `SELECT * FROM thdiary WHERE created = (SELECT created FROM thdiary GROUP BY created)`;
+    const query1 = `SELECT * FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
     let uid=request.session.user.idx;
     db.query(query1, [uid], function(error, diarys){
         if (error) {
             throw error;
         }
-        db.query(query2, function(error2, diary){
-            if (error2) {
-                throw error;
-            }
-            response.render('show.ejs', {result : diary});
-        });
+        // db.query(query2, function(error2, diary){
+        //     if (error2) {
+        //         throw error;
+        //     }
+        console.log(diarys);
+            //response.render('show.ejs', {result : diarys});
+        // });
     });
 });
 
