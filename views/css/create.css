@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 
-span{
+.container span{
     font-size: 25px;
     font-weight: bold;
 }
@@ -12,7 +12,7 @@ span{
     cursor: pointer;
 }
 
-a{
+.container a{
     text-decoration: none;
     color:black;
 }
@@ -20,7 +20,7 @@ a{
 .thk_form{
     display: flex;
     flex-direction: column;
-    width:500px;
+    width:400px;
     margin: 0 auto;
 }
 
@@ -46,4 +46,8 @@ a{
 .thk_form .submit{
     width:375px;
     margin-top:60px;
+}
+
+.im-con h1{
+    text-align: center;
 }
