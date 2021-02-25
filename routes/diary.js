@@ -40,42 +40,30 @@ router.post('/create_process', function(request, response){
 });
 
 router.get('/show', function(request, response){
-    const query1="SELECT * FROM thdiary";
-    const query2="SELECT * FROM thdiary WHERE user_id=?";
+    const query="SELECT * FROM thdiary WHERE user_id=?";
     let uid=request.session.user.idx;
-    db.query(query1, function(error, diarys){
+    db.query(query, [uid], function(error, diarys){
         if (error) {
             throw error;
         }
-        db.query(query2, [uid], function(error2, diary){
-            if (error2) {
-                throw error2;
-            }
-            response.render('show.ejs', {result : diary});
-        });
+        response.render('show.ejs', {result : diarys});
     });
 });
 
 router.post('/show_detail', function(request, response){
     let created=request.body.created;
-    const query1="SELECT * FROM thdiary";
-    const query2="SELECT * FROM thdiary WHERE user_id=?";
-    const query3="SELECT * FROM thdiary WHERE created LIKE "+db.escape(created+'%');
+    const query1="SELECT * FROM thdiary WHERE user_id=?";
+    const query2="SELECT * FROM thdiary WHERE created LIKE "+db.escape(created+'%');
     let uid=request.session.user.idx;
-    db.query(query1, function(error, diarys){
+    db.query(query1, [uid], function(error, diary){
         if (error) {
             throw error;
         }
-        db.query(query2, [uid], function(error2, diary){
+        db.query(query2, function(error2, detail_diary){
             if (error2) {
                 throw error2;
             }
-            db.query(query3, function(error3, detail_diary){
-                if (error3) {
-                    throw error3;
-                }
-                response.render('show_detail.ejs', {result : detail_diary});
-            })
+            response.render('show_detail.ejs', {result : detail_diary});
         });
     });
 })
