@@ -13,11 +13,9 @@
 }
 .nav-container .menu{
     margin:0;
-    padding:20px;
 }
 
 .nav-container .diary{
-    padding-right:180px;
     text-decoration: none;
     color:black;
     font-weight: bold;
@@ -26,4 +24,17 @@
 a{
     text-decoration: none;
     color:black;
+}
+
+.menu-con{
+    margin-right:180px;
+    width:180px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.min-con{
+    width:180px;
+    display: flex;
+    justify-content: space-between;
 }

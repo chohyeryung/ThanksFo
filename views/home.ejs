@@ -12,9 +12,14 @@
         <header>
             <img src="/images/logo.png" class="logo">
             <nav class="nav-container">
-                <a href="/diary/create" class="menu diary">감사 일기</a>
-                <a href="/diary/show"><h3 class="menu name"><%=name%></h3></a>
-                <a href="/auth/logout" class="menu logout">로그아웃</a>
+                <div class="menu-con">
+                    <a href="/diary/create" class="menu diary">나에게</a>
+                    <a href="/rolling/friends" class="menu diary">친구에게</a>
+                </div>
+                <div class="min-con">
+                    <a href="/diary/show"><h3 class="menu name"><%=name%></h3></a>
+                    <a href="/auth/logout" class="menu logout">로그아웃</a>
+                </div>
             </nav>
         </header>
     </div>
