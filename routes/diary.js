@@ -56,20 +56,13 @@ router.get('/show', function(request, response){
 });
 
 router.post('/show_detail', function(request, response){
-    // const query1="SELECT * FROM thdiary WHERE user_id=?";
-    const query2="SELECT * FROM thdiary";
-    let uid=request.session.user.idx;
-    // db.query(query1, [uid], function(error, diary){
-    //     if (error) {
-    //         throw error;
-    //     }
-        db.query(query2, function(error2, detail_diary){
-            if (error2) {
-                throw error2;
-            }
-            response.render('show_detail.ejs', {result : detail_diary});
-        });
-    // });
+    const query = "SELECT * FROM thdiary";
+    db.query(query, function(error, detail_diary){
+        if (error) {
+            throw error;
+        }
+        response.render('show_detail.ejs', {result : detail_diary});
+    });
 })
 
 module.exports=router;
