@@ -1,6 +1,7 @@
-a{
-    text-decoration: none;
-    color:black;
+form{
+    position: relative;
+    display: inline-block;
+    margin:30px;
 }
 
 .show-con{
@@ -9,7 +10,6 @@ a{
     display: inline-block;
     flex-direction: row;
     padding:50px;
-    margin:30px;
     border-radius: 70px;
 }
 
@@ -20,4 +20,15 @@ a{
 .show-con .created{
     font-size:20px;
     text-align: center;
+}
+
+.show-submit{
+    opacity: 0;
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    width:100%;
+    height:100%;
+    cursor: pointer;
 }

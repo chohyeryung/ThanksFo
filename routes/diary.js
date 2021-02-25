@@ -7,6 +7,7 @@ const MySQLStore=require('express-mysql-session')(session);
 const cookieParser = require('cookie-parser');
 const db = require('../lib/db');
 const template = require('../lib/template');
+const { connect } = require('../lib/db');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
@@ -55,24 +56,28 @@ router.get('/show', function(request, response){
     });
 });
 
-router.get('/show_detail', function(request, response){
+router.post('/show_detail', function(request, response){
+    let created=request.body.created;
     const query1="SELECT * FROM thdiary";
     const query2="SELECT * FROM thdiary WHERE user_id=?";
-    const query3="SELECT * FROM thdiary WHERE created=?";
+    const query3="SELECT * FROM thdiary WHERE created LIKE "+db.escape(created+'%');
     let uid=request.session.user.idx;
-    let created=request.body.created;
-    console.log(created);
-    // db.query(query1, function(error, diarys){
-    //     if (error) {
-    //         throw error;
-    //     }
-    //     db.query(query2, [uid], function(error2, diary){
-    //         if (error2) {
-    //             throw error2;
-    //         }
-    //         response.render('show_detail.ejs', {result : diary});
-    //     });
-    // });
+    db.query(query1, function(error, diarys){
+        if (error) {
+            throw error;
+        }
+        db.query(query2, [uid], function(error2, diary){
+            if (error2) {
+                throw error2;
+            }
+            db.query(query3, function(error3, detail_diary){
+                if (error3) {
+                    throw error3;
+                }
+                response.render('show_detail.ejs', {result : detail_diary});
+            })
+        });
+    });
 })
 
 module.exports=router;

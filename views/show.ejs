@@ -10,25 +10,31 @@
 <body>
     <% if(result!=null && result.length > 0) { %>
             <% for(var i=0; i<result.length; i++) { %>
-                <a href="/diary/show_detail">
+                <form action="/diary/show_detail" method="POST">
                     <ul class="show-con">
                         <h2>Thank From.</h2> <br>
                         <li class="created">
-                            <input type="hidden" name="created" value="<%= result[i].created %>">
-                            <%= result[i].created.getFullYear() %>
+                            <% var year=result[i].created.getFullYear() %>
+                            <%= year %>
                             .
                             <% if (( result[i].created.getMonth()+1 ) < 10) { %>
-                                0<%= result[i].created.getMonth()+1 %>
+                                <% var month=String(0)+(result[i].created.getMonth()+1) %>
+                                <%= month %>
                             <% }else { %>
-                                <%= result[i].created.getMonth()+1 %>
+                                <% var month=result[i].created.getMonth()+1 %>
+                                <%= month %>
                             <% } %>
                             .
                             <% if (( result[i].created.getDate() ) < 10) { %>
-                                0<%= result[i].created.getDate() %>
+                                <% var date=String(0)+(result[i].created.getDate() ) %>
+                                <%= date %>
                             <% }else { %>
-                                <%= result[i].created.getDate() %>
+                                <% var date=result[i].created.getDate() %>
+                                <%= date %>
                             <% } %>
+                            <% var datestring=year+"-"+month+"-"+date %>
                         </li>
+                        <input type="hidden" name="created" value="<%= datestring %>">
                         <!-- <li>
                             <%= result[i].description1 %>
                         </li>
@@ -42,7 +48,8 @@
                             <%= result[i].tome %>
                         </li> -->
                     </ul>
-                </a>
+                    <input type="submit" class="show-submit">
+                </form>
             <% } %>
     <% }else{ 
 
