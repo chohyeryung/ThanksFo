@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/views'));
 app.use(express.static('../public'));
 app.use(cookieParser());
 
-router.get('/create', function(request, response){
+router.get('/insert', function(request, response){
     response.render('create.ejs', {name : request.session.user.nickname});
 });
 
@@ -22,7 +22,7 @@ router.get('/info', function(request, response){
     response.render('info.ejs');
 });
 
-router.post('/create_process', function(request, response){
+router.post('/insert_process', function(request, response){
     const query="INSERT INTO thdiary (description1, description2, description3, created, user_id, tome) VALUES (?, ?, ?, ?, ?, ?)";
     let des1=request.body.d1;
     let des2=request.body.d2;
@@ -38,7 +38,7 @@ router.post('/create_process', function(request, response){
     });
 });
 
-router.get('/show', function(request, response){
+router.get('/getDiaries', function(request, response){
     const query1 = "SELECT * FROM thdiary WHERE user_id=?";
     const query2 = "SELECT * FROM thdiary WHERE created = (SELECT MAX(created) FROM thdiary)";
     let uid=request.session.user.idx;
@@ -55,7 +55,7 @@ router.get('/show', function(request, response){
     });
 });
 
-router.post('/show_detail', function(request, response){
+router.post('/getDiaries_detail', function(request, response){
     const query = "SELECT * FROM thdiary";
     db.query(query, function(error, detail_diary){
         if (error) {
