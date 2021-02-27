@@ -60,8 +60,8 @@ router.post('/login_process', function(request, response){
     /*
         쿠키 있는지 없는지
     */
-    let userService = new User();
-    let user = userService.getUserByEmail(email);
+    // let userService = new User();
+    // let user = userService.getUserByEmail(email);
      db.query(`SELECT * FROM user WHERE email = ?`, [email], function( error, users, fields) {
          if (error) {
              response.send({

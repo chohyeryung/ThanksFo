@@ -37,7 +37,7 @@ router.post('/insert_process', function(request, response){
     });
 });
 
-router.get('/getDiaries', function(request, response){
+router.get('/getDiaryDates', function(request, response){
     const query = `SELECT DATE_FORMAT(created, '%Y-%m-%d') as date FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
     let uid=request.session.user.idx;
     db.query(query, [uid], function(error, diarys){
@@ -48,7 +48,7 @@ router.get('/getDiaries', function(request, response){
     });
 });
 
-router.post('/getDiaries_detail', function(request, response){
+router.post('/getDiaries', function(request, response){
     let date=request.body.hiddate;
     const query = `SELECT * FROM thdiary WHERE created LIKE '${date}%'`;
     db.query(query, function(error, detail_diary){

@@ -44,7 +44,7 @@ app.get('/', function(request, response){
             if(error) {
                 throw error;
             }
-            request.session.user=users;
+            request.session.user=users[0];
             request.session.save(()=>{
                 //response.redirect('/home/'+results[0].nickname);
                 response.redirect('/home');
@@ -67,7 +67,6 @@ app.get('/', function(request, response){
 
 app.get('/home', function(request, response){
     let user = request.session.user;
-    console.log(user);
     let name = user.nickname;
     
     response.render('home.ejs', {
