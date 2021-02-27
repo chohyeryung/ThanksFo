@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 const db = require('../lib/db');
+//const User = require('../user/User');
 const app = express();
 
 app.use(session({
@@ -59,27 +60,33 @@ router.post('/login_process', function(request, response){
     /*
         쿠키 있는지 없는지
     */
-    db.query(`SELECT * FROM user WHERE email = ?`, [email],function( error, results, fields) {
-        if (error) {
-            response.send({
-                "code": 400,
-                "failed": "error ocurred"
-            })
-        }
-        if(results.length > 0) {    //그 이메일로 된 pw가 있다는 것
-            if(results[0].password == password) {
+    let userService = new User();
+    let user = userService.getUserByEmail(email);
+     db.query(`SELECT * FROM user WHERE email = ?`, [email], function( error, users, fields) {
+         if (error) {
+             response.send({
+                 "code": 400,
+                 "failed": "error ocurred"
+             })
+         }
+        if(users.length > 0) {    //그 이메일로 된 pw가 있다는 것
+            let user = users[0];
+            if(user.password == password) {
                 if(chk){
                     console.log('chk!');
-                    response.cookie('loginId', results[0].idx, {maxAge : 60*60*1000});
-
-                    request.session.user=results[0];
+                    // #. 1000ms = 1초
+                    // #. 60 * 1초= 60초 = 1분
+                    // #. 1분 * 60 = 60분 = 1시간
+                    response.cookie('loginId', user.idx, {maxAge : 60*60*1000});
+                    
+                    request.session.user=user;
                     request.session.save(()=>{
                         //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
                     });
                 }else{
                     console.log('no chk');
-                    request.session.user=results[0];
+                    request.session.user=user;
                     request.session.save(()=>{
                         //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
@@ -91,7 +98,7 @@ router.post('/login_process', function(request, response){
         }else{
             response.render('index.ejs', {message:'올바른 이메일 또는 비밀번호를 입력하세요.'});
         } 
-    });
+     });
 });
 
 /* 로그아웃 로직 (session 삭제) 

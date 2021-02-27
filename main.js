@@ -40,9 +40,15 @@ app.get('/', function(request, response){
     */
     // let cookies=request.cookies;\
     if (request.cookies.loginId) {
-        request.session.save(()=>{
-            //session.cookie=request.cookies.loginId;
-            response.redirect('/home');
+        db.query(`SELECT * FROM user WHERE idx = ?`, [request.cookies.loginId], function(error, users){
+            if(error) {
+                throw error;
+            }
+            request.session.user=users;
+            request.session.save(()=>{
+                //response.redirect('/home/'+results[0].nickname);
+                response.redirect('/home');
+            });
         });
     }else{
         response.render('index.ejs', {message:'안녕하세요.'});
@@ -61,7 +67,7 @@ app.get('/', function(request, response){
 
 app.get('/home', function(request, response){
     let user = request.session.user;
-    console.log(request.session);
+    console.log(user);
     let name = user.nickname;
     
     response.render('home.ejs', {
