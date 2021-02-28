@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/show_detail.css">
     <title>감사일기 조회</title>
 </head>
@@ -12,17 +13,33 @@
             <% for(var i=0; i<result.length; i++) { %>
                 <ul class="show-con">
                     <li>
-                        <%= result[i].description1 %>
+                        <ul class="show-menu">
+                            <form action="/diary/update" method="POST">
+                                <a href="/diary/update"><i class="fas fa-pencil-alt"></i></a>
+                                <input type="text" value="<%= result[i].idx %>" name="d_idx">
+                                <input type="submit" class="update-submit">
+                            </form>
+                            <form action="/diary/update" method="POST">
+                                <i class="far fa-calendar-times"></i>
+                                <input type="text" value="<%= result[i].idx %>" name="d_idx">
+                                <input type="submit" class="delete-submit">
+                            </form>
+                        </ul>
                     </li>
-                    <li>
-                        <%= result[i].description2 %>
-                    </li>
-                    <li>
-                        <%= result[i].description3 %>
-                    </li>
-                    <li class="tome">
-                        <%= result[i].tome %>
-                    </li>
+                    <div class="show">
+                        <li>
+                            <%= result[i].description1 %>
+                        </li>
+                        <li>
+                            <%= result[i].description2 %>
+                        </li>
+                        <li>
+                            <%= result[i].description3 %>
+                        </li>
+                        <li class="tome">
+                            <%= result[i].tome %>
+                        </li>
+                    </div>
                 </ul>
             <% } %>
     <% }else{ 

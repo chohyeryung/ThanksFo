@@ -3,14 +3,47 @@
     background-color:beige;
     display: inline-block;
     flex-direction: row;
-    padding:50px;
+    width:300px;
+    height:300px;
     margin:30px;
-    border-radius: 70px;
+    position:relative;
 }
 
+.show-con a{
+    text-decoration: none;
+    color:black;
+}
+
+.show{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-top:50px;
+}
 
 .show-con .tome{
     margin-top:10px;
     font-size: 20px;
     font-weight: bold;
+}
+
+.show-menu{
+    list-style-type: none;
+    display:flex;
+    position:relative;
+    justify-content: space-evenly;
+    right:-160px;
+    top:20px;
+    width:100px;
+}
+
+.update-submit{
+
+}
+
+.delete-submit{
+    
 }

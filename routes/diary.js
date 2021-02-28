@@ -59,4 +59,9 @@ router.post('/getDiaries', function(request, response){
     });
 })
 
+router.get('/update', function(request, response){
+    let idx=request.body.d_idx;
+    console.log(idx);
+});
+
 module.exports=router;
