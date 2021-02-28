@@ -35,15 +35,18 @@
     display:flex;
     position:relative;
     justify-content: space-evenly;
-    right:-160px;
+    right:-170px;
     top:20px;
-    width:100px;
+    width:80px;
 }
 
-.update-submit{
-
+.show-menu form{
+    width:50px;
 }
 
-.delete-submit{
-    
+.update-submit, .delete-submit{
+    position:relative;
+    top:-20px;
+    opacity: 0;
+    cursor: pointer;
 }

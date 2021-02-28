@@ -59,9 +59,21 @@ router.post('/getDiaries', function(request, response){
     });
 })
 
-router.get('/update', function(request, response){
+router.post('/update', function(request, response){
     let idx=request.body.d_idx;
-    console.log(idx);
+
 });
+
+router.post('/delete', function(request, response){
+    let idx = request.body.d_idx;
+    const query = `DELETE FROM thdiary WHERE idx = ?`;
+    db.query(query, [idx], function(error, results){
+        if(error) {
+            throw error;
+        }
+        response.redirect('/getDiaries');
+    });
+});
+
 
 module.exports=router;
