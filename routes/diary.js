@@ -8,10 +8,7 @@ const cookieParser = require('cookie-parser');
 const db = require('../lib/db');
 
 app.use(bodyParser.urlencoded({ extended: false }));
-router.use(require('body-parser').json());
 app.set('view engine', 'ejs');
-app.use(require('body-parser').json());
-router.use(require('body-parser').json());
 app.use(express.static(__dirname + '/views'));
 app.use(express.static('../public'));
 app.use(cookieParser());
@@ -104,4 +101,4 @@ router.post('/delete', function(request, response){
 });
 
 
-module.exports=router;
+module.exports = router;

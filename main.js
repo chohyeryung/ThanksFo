@@ -8,6 +8,7 @@ const db=require('./lib/db');
 const ejs=require('ejs');
 const authRouter=require('./routes/auth');
 const diaryRouter=require('./routes/diary');
+const fdiaryRouter=require('./routes/fdiary');
 const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 
@@ -33,6 +34,7 @@ app.use(express.static('public'));
 
 app.use('/auth', authRouter);
 app.use('/diary', diaryRouter);
+app.use('/fdiary', fdiaryRouter);
 
 app.get('/', function(request, response){
     /*
