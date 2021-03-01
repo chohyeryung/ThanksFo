@@ -21,3 +21,14 @@ CREATE TABLE `thdiary` (
 
   
 INSERT INTO `thdiary` VALUES (1,'다치지 않은 것','좋은 부모님이 계신 것','우엉이가 있는 것', now(), 1);
+
+CREATE TABLE `fdiary` (
+  `idx` int(40) NOT NULL AUTO_INCREMENT,
+  `fdes` varchar(100) NOT NULL,
+  `fme` varchar(100) NOT NULL,
+  `fdate` datetime NOT NULL,
+  `user_id` int(40) DEFAULT NULL,
+  PRIMARY KEY (`idx`)
+);
+
+INSERT INTO `fdiary` VALUES (1,'하이루','28살 월 1500', now(), 5);
