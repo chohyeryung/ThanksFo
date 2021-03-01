@@ -64,7 +64,31 @@ router.post('/getDiaries', function(request, response){
 
 router.post('/update', function(request, response){
     let idx=request.body.d_idx;
+    const query = `SELECT * FROM thdiary WHERE idx = ?`;
+    db.query(query, [idx], function(error, update_diary){
+        if (error) {
+            throw error;
+        }
+        response.render('diary_update.ejs', {result : update_diary});
+    });
+});
 
+router.post('/update_process', function(request, response){
+    let idx = request.body.d_idx;
+    let d1 = request.body.d1;
+    let d2 = request.body.d1;
+    let d3 = request.body.d1;
+    let created = new Date();
+    let u_id = request.session.user.idx;
+    let tome = request.body.tome;
+    const query = `UPDATE thdiary SET description1=?, description2=?, description3=?, created=?, user_id=?, tome=? WHERE idx=?`;
+    db.query(query, [d1, d2, d3, created, u_id, tome, idx], function(error, results){
+        if(error) {
+            throw error;
+        }
+        console.log('good');
+        response.redirect('/home');
+    });
 });
 
 router.post('/delete', function(request, response){
@@ -74,7 +98,8 @@ router.post('/delete', function(request, response){
         if(error) {
             throw error;
         }
-        response.redirect('/getDiaries');
+        // response.redirect('/getDiaries');
+        response.redirect('/home');
     });
 });
 
