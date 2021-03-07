@@ -48,8 +48,8 @@ router.get('/getDiaryDates', function(request, response){
     });
 });
 
-router.post('/getDiaries', function(request, response){
-    let date=request.body.hiddate;
+router.get('/getDiaries', function(request, response){
+    let date=request.query.hiddate;
     const query = `SELECT * FROM thdiary WHERE created LIKE '${date}%'`;
     db.query(query, function(error, detail_diary){
         if (error) {
@@ -95,8 +95,8 @@ router.post('/delete', function(request, response){
         if(error) {
             throw error;
         }
-        // response.redirect('/getDiaries');
-        response.redirect('/home');
+        response.redirect('/getDiaryDates');
+        // response.redirect('/home');
     });
 });
 
