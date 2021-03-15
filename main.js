@@ -37,10 +37,6 @@ app.use('/diary', diaryRouter);
 app.use('/fdiary', fdiaryRouter);
 
 app.get('/', function(request, response){
-    /*
-       . 
-    */
-    // let cookies=request.cookies;\
     if (request.cookies.loginId) {
         db.query(`SELECT * FROM user WHERE idx = ?`, [request.cookies.loginId], function(error, users){
             if(error) {
@@ -48,14 +44,12 @@ app.get('/', function(request, response){
             }
             request.session.user=users[0];
             request.session.save(()=>{
-                //response.redirect('/home/'+results[0].nickname);
                 response.redirect('/home');
             });
         });
     }else{
         response.render('index.ejs', {message:'안녕하세요.'});
     }
-    // response.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 // app.post('/', function(request, response){

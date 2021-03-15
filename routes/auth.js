@@ -60,8 +60,6 @@ router.post('/login_process', function(request, response){
     /*
         쿠키 있는지 없는지
     */
-    // let userService = new User();
-    // let user = userService.getUserByEmail(email);
      db.query(`SELECT * FROM user WHERE email = ?`, [email], function( error, users, fields) {
          if (error) {
              response.send({
@@ -73,7 +71,6 @@ router.post('/login_process', function(request, response){
             let user = users[0];
             if(user.password == password) {
                 if(chk){
-                    console.log('chk!');
                     // #. 1000ms = 1초
                     // #. 60 * 1초= 60초 = 1분
                     // #. 1분 * 60 = 60분 = 1시간
@@ -81,14 +78,11 @@ router.post('/login_process', function(request, response){
                     
                     request.session.user=user;
                     request.session.save(()=>{
-                        //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
                     });
                 }else{
-                    console.log('no chk');
                     request.session.user=user;
                     request.session.save(()=>{
-                        //response.redirect('/home/'+results[0].nickname);
                         response.redirect('/home');
                     });
                 }
