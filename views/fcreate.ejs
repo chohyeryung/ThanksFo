@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/fcreate.css">
+    <link rel="shortcut icon" href="#">
     <title>홈</title>
 </head>
 <body>
@@ -13,6 +14,7 @@
             <h1>To. 미래의 <%=name%></h1>
         </div>
         <form action="/fdiary/insert_process" method="POST" class="f_form">
+            <input name="title" required placeholder="미래편지 제목">
             <textarea name="fdes" cols="55" rows="5" required placeholder="미래의 나에게 ," class="thk one"></textarea><br>
             <input name="fme" required placeholder="미래의 나는 어떤 사람일까?" class="thk three"><br>
             <h4>시간 정하기</h4>
