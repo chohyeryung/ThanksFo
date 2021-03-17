@@ -17,4 +17,11 @@ router.get('/create', function(request, response){
     response.render('fcreate.ejs', {name : request.session.user.nickname});
 });
 
+router.post('/insert_process', function(request, response){
+    let con = request.body.fdes
+    let me = request.body.fme
+    let date = request.body.fdate;
+    response.send(con, me, date);
+});
+
 module.exports = router;
