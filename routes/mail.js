@@ -6,8 +6,6 @@ const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 const cookieParser = require('cookie-parser');
 
-// query에서 데이터 가져와서 메일 보내기
-
 var job = schedule.scheduleJob('15 * * * * *', function(){
     
     let now = new Date();
@@ -19,6 +17,15 @@ var job = schedule.scheduleJob('15 * * * * *', function(){
         }
          console.log(results);
         if(results.length>0) {
+            let title = results.title;
+            let con = results.fdes;
+            let me = results.fme;
+            let mtext = `
+                <h3>미래의 나에게</h3><br>
+                ${con}<p>
+                <h3>미래에 나는 어떤 사람일까 ? </h3><br>
+                ${me}<p>
+            `;
             var transporter = nodemailer.createTransport(smtpTransport({
                 service: 'gmail',
                 host: 'smtp.gmail.com',

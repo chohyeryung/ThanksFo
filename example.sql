@@ -34,3 +34,4 @@ CREATE TABLE `fdiary` (
 INSERT INTO `fdiary` VALUES (1,'하이루','28살 월 1500', now(), 5);
 
 -- title도 넣기
+ALTER TABLE `fdiary` ADD `title` varchar(40) NOT NULL AFTER `idx`;

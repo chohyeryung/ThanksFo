@@ -24,16 +24,10 @@ router.post('/insert_process', function(request, response){
     let me = request.body.fme
     let date = request.body.fdate;
     let title = request.body.title;
-    var mtext = `
-        <h3>미래의 나에게</h3><br>
-        ${con}<p>
-        <h3>미래에 나는 어떤 사람일까 ? </h3><br>
-        ${me}<p>
-    `;
 
-    const query = `INSERT INTO fdiary(title, fdes, fme, fdate, user_id) VALUES(?, ?, ?, ?)`;
+    const query = `INSERT INTO fdiary(title, fdes, fme, fdate, user_id) VALUES(?, ?, ?, ?, ?)`;
 
-    db.query(query, [con, me, date, uid], function(error, results){
+    db.query(query, [title, con, me, date, uid], function(error, results){
         if (error) {
             throw error;
         }
