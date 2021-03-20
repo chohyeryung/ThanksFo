@@ -20,6 +20,7 @@ router.get('/create', function(request, response){
 });
 
 router.post('/insert_process', function(request, response){
+    let uid = request.session.user.uid;
     let con = request.body.fdes
     let me = request.body.fme
     let date = request.body.fdate;
@@ -31,29 +32,14 @@ router.post('/insert_process', function(request, response){
         ${me}<p>
     `;
 
-    var transporter = nodemailer.createTransport(smtpTransport({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        auth: {
-          user: 'chohyeryungcho@gmail.com',
-          pass: '0308whgPfud!1025@'
-        }
-      }));
-       
-      var mailOptions = {
-        from: 'chohyeryungcho@gmail.com',
-        to: request.session.user.email,
-        subject: title,
-        html: mtext
-      };
-       
-      transporter.sendMail(mailOptions, function(error, info){
+    const query = `INSERT INTO fdiary(fdes, fme, fdate, user_id) VALUES(?, ?, ?, ?)`;
+
+    db.query(query, [con, me, date, uid], function(error, results){
         if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
+            throw error;
         }
-      });  
+        response.redirect('/home');
+    });
     
 });
 
