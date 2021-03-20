@@ -2,16 +2,22 @@ const schedule = require('node-schedule');
 const db = require('../lib/db');
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
+const session=require('express-session');
+const MySQLStore=require('express-mysql-session')(session);
+const cookieParser = require('cookie-parser');
+
+// query에서 데이터 가져와서 메일 보내기
 
 var job = schedule.scheduleJob('15 * * * * *', function(){
-    console.log('job 실행');
+    
     let now = new Date();
-    const query = `SELECT * FROM fdiary WHERE fdate = ?`;
-
+    const query = `SELECT * FROM fdiary WHERE DATE_FORMAT(fdate, '%Y-%m-%d') = DATE_FORMAT(?, '%Y-%m-%d')`;
+   
     db.query(query, [now], function(error, results){
         if(error) {
             throw error;
         }
+         console.log(results);
         if(results.length>0) {
             var transporter = nodemailer.createTransport(smtpTransport({
                 service: 'gmail',

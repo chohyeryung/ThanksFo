@@ -31,7 +31,7 @@ router.post('/insert_process', function(request, response){
         ${me}<p>
     `;
 
-    const query = `INSERT INTO fdiary(fdes, fme, fdate, user_id) VALUES(?, ?, ?, ?)`;
+    const query = `INSERT INTO fdiary(title, fdes, fme, fdate, user_id) VALUES(?, ?, ?, ?)`;
 
     db.query(query, [con, me, date, uid], function(error, results){
         if (error) {
