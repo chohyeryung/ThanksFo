@@ -3,7 +3,8 @@ const db = require('../lib/db');
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 
-var job = schedule.scheduleJob('0 0 12 * * *', function(){
+var job = schedule.scheduleJob('15 * * * * *', function(){
+    console.log('job 실행');
     let now = new Date();
     const query = `SELECT * FROM fdiary WHERE fdate = ?`;
 
@@ -39,3 +40,4 @@ var job = schedule.scheduleJob('0 0 12 * * *', function(){
     }); 
 });
 
+module.exports = job;

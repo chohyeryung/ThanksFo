@@ -9,6 +9,7 @@ const ejs=require('ejs');
 const authRouter=require('./routes/auth');
 const diaryRouter=require('./routes/diary');
 const fdiaryRouter=require('./routes/fdiary');
+const mailRouter=require('./routes/mail');
 const session=require('express-session');
 const MySQLStore=require('express-mysql-session')(session);
 
