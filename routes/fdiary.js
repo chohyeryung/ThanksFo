@@ -3,11 +3,10 @@ const router=express.Router();
 const app=express();
 const bodyParser = require('body-parser');
 const session=require('express-session');
-const nodemailer = require('nodemailer');
 const MySQLStore=require('express-mysql-session')(session);
 const cookieParser = require('cookie-parser');
 const db = require('../lib/db');
-const smtpTransport = require('nodemailer-smtp-transport');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
@@ -20,7 +19,7 @@ router.get('/create', function(request, response){
 });
 
 router.post('/insert_process', function(request, response){
-    let uid = request.session.user.uid;
+    let uid = request.session.user.idx;
     let con = request.body.fdes
     let me = request.body.fme
     let date = request.body.fdate;
