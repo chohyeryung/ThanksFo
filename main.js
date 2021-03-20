@@ -53,15 +53,6 @@ app.get('/', function(request, response){
     }
 });
 
-// app.post('/', function(request, response){
-//     if(request.body.remember){
-//         response.cookie('remember', 1, {maxAge:minute});
-//         response.redirect('');
-//     }else{
-        
-//     }
-// });
-
 app.get('/home', function(request, response){
     let user = request.session.user;
     let name = user.nickname;
