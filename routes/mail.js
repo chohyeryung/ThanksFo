@@ -7,7 +7,7 @@ const MySQLStore=require('express-mysql-session')(session);
 const cookieParser = require('cookie-parser');
 
 // 0 0 0 * * *  자정
-var job = schedule.scheduleJob('0 17 20 * * *', function(){
+var job = schedule.scheduleJob('0 0 0 * * *', function(){
     
     let now = new Date();
 
@@ -17,14 +17,12 @@ var job = schedule.scheduleJob('0 17 20 * * *', function(){
         if(error) {
             throw error;
         }
-        if(results>0){
+        if(results.length>0){
             for(var i=0; i<results.length; i++){
-                // console.log(results[i]); 이게 작동 안함
                 let email = results[i].email;
                 let title = results[i].title;
                 let con = results[i].fdes;
                 let me = results[i].fme;
-                console.log(email, title, con, me);
                 let mtext = `
                     <h3>미래의 나에게</h3><br>
                     ${con}<p>
@@ -32,29 +30,29 @@ var job = schedule.scheduleJob('0 17 20 * * *', function(){
                     ${me}<p>
                 `;
         
-                // var transporter = nodemailer.createTransport(smtpTransport({
-                //     service: 'gmail',
-                //     host: 'smtp.gmail.com',
-                //     auth: {
-                //         user: 'chohyeryungcho@gmail.com',
-                //         pass: '0308whgPfud!1025@'
-                //     }
-                // }));
+                var transporter = nodemailer.createTransport(smtpTransport({
+                    service: 'gmail',
+                    host: 'smtp.gmail.com',
+                    auth: {
+                        user: 'chohyeryungcho@gmail.com',
+                        pass: '0308whgPfud!1025@'
+                    }
+                }));
                 
-                // var mailOptions = {
-                //     from: 'chohyeryungcho@gmail.com',
-                //     to: email,
-                //     subject: title,
-                //     html: mtext
-                // };
+                var mailOptions = {
+                    from: 'chohyeryungcho@gmail.com',
+                    to: email,
+                    subject: title,
+                    html: mtext
+                };
                 
-                // transporter.sendMail(mailOptions, function(error, info){
-                //     if (error) {
-                //         console.log(error);
-                //     } else {
-                //         console.log('Email sent: ' + info.response);
-                //     }
-                // });
+                transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
             }
         }
     }); 
