@@ -19,6 +19,23 @@
           titleFormat: function (date) {
             return `${date.date.year}년 ${date.date.month + 1}월`;
           },
+          contentHeight: 800,
+          dayHeaderContent: function (date) {
+            let weekList = ["일", "월", "화", "수", "목", "금", "토"];
+            return weekList[date.dow];
+          },
+          dateClick: function(dateClickInfo) {
+            const gray="#a3a3a3";
+
+            if(dateClickInfo.dayEl.style.backgroundColor) {
+              dateClickInfo.dayEl.style.backgroundColor = "";
+            }else {
+              dateClickInfo.dayEl.style.backgroundColor = gray;
+            }
+          },
+          // eventContent: {
+          //   html: `<div><img src="/images/star.png" class="event-icon" />some html</div>`,
+          // },
         });
         calendar.render();
       });
