@@ -1,0 +1,13 @@
+.fc-toolbar-chunk {
+    display: flex;
+    align-items: center;
+  }
+  
+  .fc-day-sun{
+    color:red;
+  }
+  
+  .fc-day-sat{
+    color:blue;
+  }
+  

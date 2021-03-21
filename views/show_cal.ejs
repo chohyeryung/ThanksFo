@@ -3,13 +3,22 @@
   <head>
     <meta charset='utf-8' />
     <link href='/fullcalendar/main.css' rel='stylesheet' />
+    <link href='/css/cal.css' rel='stylesheet' />
     <script src='/fullcalendar/main.js'></script>
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+          initialView: 'dayGridMonth',
+          headerToolbar: {
+            start: "",
+            center: "prev title next",
+            end: "today",
+          },
+          titleFormat: function (date) {
+            return `${date.date.year}년 ${date.date.month + 1}월`;
+          },
         });
         calendar.render();
       });
