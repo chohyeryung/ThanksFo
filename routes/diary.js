@@ -44,7 +44,8 @@ router.get('/getDiaryDates', function(request, response){
         if (error) {
             throw error;
         }
-        response.render('show.ejs', {result : diarys});
+        // response.render('show.ejs', {result : diarys});
+        response.render('show_cal.ejs');
     });
 });
 
