@@ -8,13 +8,6 @@
     <script src='/fullcalendar/main.js'></script>
     <script>
 
-      window.onload = function() {
-        var button = document.getElementsByClassName('fc-button');
-        button.click(function() {
-          alert('hi');
-        })
-      }
-
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -40,11 +33,53 @@
             }else {
               dateClickInfo.dayEl.style.backgroundColor = gray;
             }
-          }
+          },
+          customButtons:{
+            prev:{
+              text:'<',
+              click:function() {
+                calendar.prev();
+                var date = calendar.getDate();
+                var month = date.getMonth()+1;
+                getDates(month);
+              }
+            },
+            next:{
+              text:'>',
+              click:function() {
+                calendar.next();
+                var date = calendar.getDate();
+                var month = date.getMonth()+1;
+                getDates(month);
+              }
+            }
+          },
+
+          // viewSkeletonRender: function(info) {
+          //   calendarEl.querySelectorAll('.fc-button').forEach((button) => {
+          //     if(button.innerText === '<') {
+          //       button.classList.add('prev-btn');
+          //     }else if(button.innerText === '>') {
+          //       button.classList.add('next-btn');
+          //     }
+          //   })
+          // }
         });
        
         calendar.render();
-        
+
+        // document.getElementById('prev').addEventListener('click', function() {
+        //   calendar.prev();
+        //   var date = calendar.getDate();
+        //   getDates(date);
+        // });
+
+        // document.getElementById('next').addEventListener('click', function() {
+        //   calendar.next();
+        //   var date = calendar.getDate();
+        //   getDates(date);
+        // });
+
       });
       
       function getDates(date) {
@@ -54,6 +89,10 @@
     </script>
   </head>
   <body>
+    <p>
+      <!-- <button id='prev'>prev</button>
+      <button id='next'>next</button> -->
+    </p>
     <div id='calendar'></div>
   </body>
 </html>
