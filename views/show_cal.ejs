@@ -2,7 +2,7 @@
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <link href='/fullcalendar/main.css' rel='stylesheet' />
     <link href='/css/cal.css' rel='stylesheet' />
     <script src='/fullcalendar/main.js'></script>
@@ -82,10 +82,28 @@
 
       });
       
-      function getDates(date) {
-        alert(date);
+      function getDates(month) {
+        // alert(date);
+        $.ajax({
+          type : 'POST',
+          dataType : 'json',
+          url : '/diary/getCalDates',
+          data : {month : month},
+          success : createEvents(data),
+        });
       }
 
+      function createEvents(data){
+        // var res = JSON.parse(ajax.getResponse ());
+        // console.log(res.datas);
+        // console.log(datas);
+        var data = {'datas' : data};
+        data = JSON.stringify(data);
+
+        console.log(data);
+      }
+
+      
     </script>
   </head>
   <body>

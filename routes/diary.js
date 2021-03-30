@@ -37,6 +37,20 @@ router.post('/insert_process', function(request, response){
     });
 });
 
+router.post('/getCalDates', function(request, response){
+    var month = request.body.month;
+    // const query = `SELECT DATE_FORMAT(created, '%c') FROM thdiary`;
+    const query = `SELECT * FROM thdiary WHERE DATE_FORMAT(created, '%c') = ?`;
+    db.query(query, [month], function(error, results){
+        if(error) {
+            throw error;
+        }
+        
+        response.json({'datas' : results});
+        // console.log(results);
+    });
+});
+
 router.get('/getDiaryDates', function(request, response){
     const query = `SELECT DATE_FORMAT(created, '%Y-%m-%d') as date FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
     let uid=request.session.user.idx;
