@@ -11,14 +11,14 @@
 <body>
     <div class="container">
         <div class="im-con">
-            <h1>To. 미래의 <%=name%></h1>
+            <h1>To. 미래의 <%=name%> 님</h1>
+            <h4>미래의 나에게 편지를 써보세요!</h4>
         </div>
         <form action="/fdiary/insert_process" method="POST" class="f_form">
-            <input name="title" required placeholder="미래편지 제목">
-            <textarea name="fdes" cols="55" rows="5" required placeholder="미래의 나에게 ," class="thk one"></textarea><br>
-            <input name="fme" required placeholder="미래의 나는 어떤 사람일까?" class="thk three"><br>
-            <h4>시간 정하기</h4>
-            <input type="date" name="fdate"><br>
+            <input name="title" required class="input title" placeholder="제목"><br>
+            <textarea name="fdes" cols="55" rows="5" required placeholder="미래의 나에게 ," class="input thk one"></textarea><br>
+            <input name="fme" required placeholder="미래의 나는 어떤 사람일까?" class="input thk three"><br>
+            <input type="date" class="input date" name="fdate"><br>
             <input type="submit" class="submit" value="타임 캡슐">
         </form>
     </div>
