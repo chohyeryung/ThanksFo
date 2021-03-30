@@ -2,10 +2,18 @@
 <html lang='en'>
   <head>
     <meta charset='utf-8' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href='/fullcalendar/main.css' rel='stylesheet' />
     <link href='/css/cal.css' rel='stylesheet' />
     <script src='/fullcalendar/main.js'></script>
     <script>
+
+      window.onload = function() {
+        var button = document.getElementsByClassName('fc-button');
+        button.click(function() {
+          alert('hi');
+        })
+      }
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -32,14 +40,16 @@
             }else {
               dateClickInfo.dayEl.style.backgroundColor = gray;
             }
-          },
-          // events: '/js/load.js'
-          // eventContent: {
-          //   html: `<div><img src="/images/star.png" class="event-icon" />some html</div>`,
-          // },
+          }
         });
+       
         calendar.render();
+        
       });
+      
+      function getDates(date) {
+        alert(date);
+      }
 
     </script>
   </head>
