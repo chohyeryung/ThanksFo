@@ -1,57 +1,53 @@
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body{
     width:100%;
     margin:0;
-}
-
-.container{
-    position:relative;
+    font-family: 'DungGeunMo';
 }
 
 .login_form{
-    position:absolute;
-    right:20%;
-    width:400px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 10px #0000001A;
+  border: 1px solid #897D6D;
+  width: 600px;
+  height: 740px;
+  opacity: 1;
+  margin:0 auto;
+  margin-top: 100px;
 }
 
-.login_form input{
-    display:block;
-    margin-top:20px;
-    width:100%;
-    height:60px;
-    padding:0;
+.inner{
+  width:400px;
+  margin:0 auto;
+  text-align: center;
+}
+
+.main-title{
+  text-align: center;
+  letter-spacing: -1.76px;
+  color: #85755F;
+  margin-top:100px;
+  font-size:40px;
 }
 
 .login_form .login{
-    padding-left:20px;
+  border:none;
+  border-bottom:1px solid #85755F;
+  outline:none;
+  width: 340px;
+  height: 62px;
+  opacity: 0.4;
+  margin-top:20px;
 }
 
-.login_form .login_btn{
-    border-radius:50px;
-    border:none;
-    height:70px;
-    margin-top:50px;
-    width:105%;
-}
-
-.login_form h5{
-    text-align: center;
-    margin-left:25px;
-    font-weight: normal;
-}
-
-.login_form h5:hover{
-    cursor: pointer;
-}
-
-.login_form a{
-    text-decoration: none;
-    color:black;
-}
-
-h3{
-    color:darkred;
-    font-weight: bold;
-    text-align: center;
+.login-input{
+  margin-top:30px;
 }
 
 /* 체크 박스, 로그인 상태 유지 글 한 줄 */
@@ -59,7 +55,8 @@ h3{
     display: block;
     position: relative;
     padding-left: 35px;
-    margin: 20px;
+    text-align: left;
+    margin: 40px;
     padding-top:2px;
     cursor: pointer;
     font-size: 15px;
@@ -75,6 +72,7 @@ h3{
     cursor: pointer;
     height: 0;
     width: 0;
+    font-family: 'DungGeunMo';
   }
   
   .checkmark {
@@ -83,7 +81,7 @@ h3{
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
+    background-color: #897D6D;
   }
   
   .login_chk:hover input ~ .checkmark {
@@ -118,3 +116,24 @@ h3{
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+.buttons .login_btn{
+  margin-top:30px;
+  width:190px;
+  font-family: 'DungGeunMo';
+  height:70px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1px solid #897D6D;
+  color:#897D6D;
+  border-radius: 30px;
+}
+
+.buttons .join_btn{
+  width:190px;
+  font-family: 'DungGeunMo';
+  height:70px;
+  background: #A29077 0% 0% no-repeat padding-box;
+  color:white;
+  border:none;
+  border-radius: 30px;
+}
