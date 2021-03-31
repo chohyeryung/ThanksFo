@@ -65,6 +65,34 @@
           //   })
           // }
         });
+
+        function getDates(month) {
+          // alert(date);
+          $.ajax({
+            type : 'POST',
+            dataType : 'json',
+            url : '/diary/getCalDates',
+            data : {month : month},
+            success : function(datas){
+              console.log(datas);
+              /*
+                
+              */
+              var data = JSON.stringify(datas);
+              
+              // createEvents(data);
+              // for(var i=0; i<data.length(); i++){
+              //   // calendar.addEvent({
+              //   //   title: data[i].,
+              //   //   start: date,
+              //   //   allDay: true
+              //   // });
+                // console.log(data);
+              // }
+            },
+          });
+        }
+      
        
         calendar.render();
 
@@ -82,25 +110,7 @@
 
       });
       
-      function getDates(month) {
-        // alert(date);
-        $.ajax({
-          type : 'POST',
-          dataType : 'json',
-          url : '/diary/getCalDates',
-          data : {month : month},
-          success : function(data){
-            createEvents(data);
-          },
-        });
-      }
-
-      function createEvents(data){
-        //이제 달력에 데이터 들을 찍어야함
-        //0:{idx:1, ...}
-        //1:{idx:2, ...}
-        console.log(data);
-      }
+      
 
       
     </script>
