@@ -24,7 +24,32 @@ body{
     background-size: cover;
 }
 
+.container{
+    position:relative;
+}
+
 .container .one{
+    margin-top:110px;
+    margin-left:350px;
+    background-image:url('/images/thxEx_textBg01.png');
+    background-repeat: no-repeat;
+    width:560px;
+    height:420px;
+    background-size: contain;
+    position:relative;
+}
+
+.container .second{
+    background-image:url('/images/thxEx_textBg02.png');
+    background-repeat: no-repeat;
+    width:600px;
+    height:80px;
+    position:relative;
+    top:110px;
+    left: 985px;
+}
+
+.container .thrid{
     margin-top:110px;
     margin-left:350px;
     background-image:url('/images/thxEx_textBg01.png');
@@ -68,4 +93,12 @@ span{
     position:absolute;
     bottom:-20px;
     left:70px;
+}
+
+h4{
+    text-align: center;
+}
+
+.third-ul{
+    list-style-type: disc;
 }
