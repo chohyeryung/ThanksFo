@@ -89,17 +89,16 @@
           dataType : 'json',
           url : '/diary/getCalDates',
           data : {month : month},
-          success : createEvents(data),
+          success : function(data){
+            createEvents(data);
+          },
         });
       }
 
       function createEvents(data){
-        // var res = JSON.parse(ajax.getResponse ());
-        // console.log(res.datas);
-        // console.log(datas);
-        var data = {'datas' : data};
-        data = JSON.stringify(data);
-
+        //이제 달력에 데이터 들을 찍어야함
+        //0:{idx:1, ...}
+        //1:{idx:2, ...}
         console.log(data);
       }
 
