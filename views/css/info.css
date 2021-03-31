@@ -18,30 +18,54 @@ html, body{
 }
 
 body{
-    background-image: url('/images/map1.jpeg');
+    background-image: url('/images/bg.png');
     background-repeat: no-repeat;
     background-attachment: fixed;  
     background-size: cover;
 }
 
-.container{
-    width:430px;
-    margin:0 auto;
-    margin-top:160px;
-    background-color: whitesmoke;
-    border-radius: 50px;
-    padding:40px;
-    line-height: 200%;
+.container .one{
+    margin-top:110px;
+    margin-left:350px;
+    background-image:url('/images/thxEx_textBg01.png');
+    background-repeat: no-repeat;
+    width:560px;
+    height:420px;
+    background-size: contain;
+    position:relative;
 }
 
-.container h2{
-    font-family: 'HSBombaram3_Regular';
-    text-align: center;
-    font-size: 40px;
-    font-weight: normal;
+span{
+    position:absolute;
+    top:80px;
+    left:80px;
+    font-size: 30px;
+    color:#85755F;
+    font-weight: bold;
 }
 
-.container ol, ul{
-    font-family: 'Wemakeprice-Bold';
-    margin-left:22px;
+.one-ol{
+    position:absolute;
+    top:80px;
+    line-height: 40px;
+    padding:0;
+    left:100px;
+    margin:0;
+    margin-top:60px;
+}
+
+.one-img{
+    width:100px;
+    height:100px;
+    position:absolute;
+    left:-25px;
+    bottom:-15px;
+}
+
+.second-img{
+    width:60px;
+    height:60px;
+    position:absolute;
+    bottom:-20px;
+    left:70px;
 }
