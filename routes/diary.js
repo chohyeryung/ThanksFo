@@ -13,6 +13,9 @@ app.use(express.static(__dirname + '/views'));
 app.use(express.static('../public'));
 app.use(cookieParser());
 
+router.get('/info', function(request, response) {
+    response.render('info.ejs');
+})
 router.get('/insert', function(request, response){
     response.render('create.ejs', {name : request.session.user.nickname});
 });

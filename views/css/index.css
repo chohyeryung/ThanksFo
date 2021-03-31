@@ -9,6 +9,9 @@ body{
     width:100%;
     margin:0;
     font-family: 'DungGeunMo';
+    background-image: url('../images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .login_form{
