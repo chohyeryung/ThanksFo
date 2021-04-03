@@ -12,6 +12,7 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
+          selectable: true,
           initialView: 'dayGridMonth',
           headerToolbar: {
             start: "",
@@ -55,16 +56,11 @@
               }
             }
           },
-
-          // viewSkeletonRender: function(info) {
-          //   calendarEl.querySelectorAll('.fc-button').forEach((button) => {
-          //     if(button.innerText === '<') {
-          //       button.classList.add('prev-btn');
-          //     }else if(button.innerText === '>') {
-          //       button.classList.add('next-btn');
-          //     }
-          //   })
-          // }
+          eventClick:function(info){
+            console.log(info.event._def);
+            //publicId
+          }
+          
         });
 
         function getDates(month) {
@@ -80,6 +76,7 @@
                 console.log(jsons.datas[i].idx);
                 calendar.addEvent({
                   title:jsons.datas[i].description1,
+                  id:jsons.datas[i].idx,
                   start:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
                   allDay: true,
                   color:'green',
@@ -90,20 +87,7 @@
           });
         }
       
-       
         calendar.render();
-
-        // document.getElementById('prev').addEventListener('click', function() {
-        //   calendar.prev();
-        //   var date = calendar.getDate();
-        //   getDates(date);
-        // });
-
-        // document.getElementById('next').addEventListener('click', function() {
-        //   calendar.next();
-        //   var date = calendar.getDate();
-        //   getDates(date);
-        // });
 
       });
       
