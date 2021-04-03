@@ -73,12 +73,15 @@
             dataType : 'json',
             url : '/diary/getCalDates',
             data : {month : month},
-            success : function(datas){
-              console.log(datas);
+            success : function(jsons){
+              console.log(jsons.datas);
+              for(var i=0; i<jsons.datas.length; i++){
+                console.log(jsons.datas[i]);
+              }
               /*
                 
               */
-              var data = JSON.stringify(datas);
+              
               
               // createEvents(data);
               // for(var i=0; i<data.length(); i++){
