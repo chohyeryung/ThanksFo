@@ -67,6 +67,8 @@ router.get('/getDiaryDates', function(request, response){
 });
 
 router.get('/getDiaries', function(request, response){
+    var queryData = url.parse(request.url, true).query;
+    console.log(queryData);
     let date=request.query.hiddate;
     const query = `SELECT * FROM thdiary WHERE created LIKE '${date}%'`;
     db.query(query, function(error, detail_diary){

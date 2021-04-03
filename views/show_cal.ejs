@@ -8,9 +8,14 @@
     <link href='/css/cal.css' rel='stylesheet' />
     <script src='/fullcalendar/main.js'></script>
     <script>
-
+      
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
+        //이걸 현재 month는 안나와서 (<, > 버튼 클릭시에만 diary가 나오게 함)
+        // var date = calendar.getDate();
+        // var month = date.getMonth()+1;
+        // getDates(month);
+        
         var calendar = new FullCalendar.Calendar(calendarEl, {
           selectable: true,
           initialView: 'dayGridMonth',
@@ -19,6 +24,7 @@
             center: "prev title next",
             end: "today",
           },
+          
           titleFormat: function (date) {
             return `${date.date.year}년 ${date.date.month + 1}월`;
           },
@@ -59,11 +65,16 @@
           eventClick:function(info){
             console.log(info.event._def);
             //publicId
+            //extendedProps.created
+            location.href = "/diary/getDiaries?=";  //여기서 show_detail로 result를 보내야하는데...
+            //diary/getDiaries로 created 어떻게 보낼건지도
           }
           
         });
 
+        //계속 추가가됨 ㅠㅠ
         function getDates(month) {
+          
           // alert(date);
           $.ajax({
             type : 'POST',
@@ -73,10 +84,11 @@
             success : function(jsons){
               // console.log(jsons.datas);
               for(var i=0; i<jsons.datas.length; i++){
-                console.log(jsons.datas[i].idx);
                 calendar.addEvent({
-                  title:jsons.datas[i].description1,
+                  // title:jsons.datas[i].description1,
+                  title:'감사일기 확인',
                   id:jsons.datas[i].idx,
+                  created:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
                   start:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
                   allDay: true,
                   color:'green',
@@ -97,10 +109,6 @@
     </script>
   </head>
   <body>
-    <p>
-      <!-- <button id='prev'>prev</button>
-      <button id='next'>next</button> -->
-    </p>
     <div id='calendar'></div>
   </body>
 </html>
