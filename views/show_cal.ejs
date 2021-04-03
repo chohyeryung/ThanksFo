@@ -80,8 +80,10 @@
                 console.log(jsons.datas[i].idx);
                 calendar.addEvent({
                   title:jsons.datas[i].description1,
-                  start:moment(jsons.datas[i].created).format('%Y-%m-%d'),
-                  end:moment(jsons.datas[i].created).format('%Y-%m-%d')
+                  start:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
+                  allDay: true,
+                  color:'green',
+                  end:moment(jsons.datas[i].created).format('YYYY-MM-DD')
                 });
               }
 
