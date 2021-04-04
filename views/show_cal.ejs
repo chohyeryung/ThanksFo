@@ -12,10 +12,6 @@
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
-        //이걸 현재 month는 안나와서 (<, > 버튼 클릭시에만 diary가 나오게 함)
-        // var date = calendar.getDate();
-        // var month = date.getMonth()+1;
-        // getDates(month);
         
         calendar = new FullCalendar.Calendar(calendarEl, {
           selectable: true,
@@ -72,9 +68,6 @@
           }
           
         });
-
-        
-      
         calendar.render();
 
       });
@@ -85,9 +78,14 @@
         getDates(new Date().getMonth()+1);
       }
       
-      //계속 추가가됨 ㅠㅠ
       function getDates(month) {
-          alert(month);
+          // var eventSources = calendar.getEventSources(); 
+          // var len = eventSources.length;
+          // console.log(calendar);
+          // for (var i = 0; i < len; i++) { 
+          //     eventSources[i].remove(); 
+          // } 
+          calendar.removeAllEvents();
           $.ajax({
             type : 'POST',
             dataType : 'json',
