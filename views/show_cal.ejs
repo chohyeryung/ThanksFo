@@ -79,34 +79,28 @@
       }
       
       function getDates(month) {
-          // var eventSources = calendar.getEventSources(); 
-          // var len = eventSources.length;
-          // console.log(calendar);
-          // for (var i = 0; i < len; i++) { 
-          //     eventSources[i].remove(); 
-          // } 
-          calendar.removeAllEvents();
-          $.ajax({
-            type : 'POST',
-            dataType : 'json',
-            url : '/diary/getCalDates',
-            data : {month : month},
-            success : function(jsons){
-              console.log(jsons.datas);
-              for(var i=0; i<jsons.datas.length; i++){
-                calendar.addEvent({
-                  title:'감사일기 확인',
-                  // id:jsons.datas[i].idx,
-                  created:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
-                  start:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
-                  allDay: true,
-                  color:'green',
-                  end:moment(jsons.datas[i].created).format('YYYY-MM-DD')
-                });
-              }
-            },
-          });
-        }
+        calendar.removeAllEvents();
+        $.ajax({
+          type : 'POST',
+          dataType : 'json',
+          url : '/diary/getCalDates',
+          data : {month : month},
+          success : function(jsons){
+            console.log(jsons.datas);
+            for(var i=0; i<jsons.datas.length; i++){
+              calendar.addEvent({
+                title:'감사일기 확인',
+                // id:jsons.datas[i].idx,
+                created:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
+                start:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
+                allDay: true,
+                color:'green',
+                end:moment(jsons.datas[i].created).format('YYYY-MM-DD')
+              });
+            }
+          },
+        });
+      }
 
     </script>
   </head>
