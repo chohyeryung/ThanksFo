@@ -9,7 +9,6 @@
     <script src='/fullcalendar/main.js'></script>
     <script>
       var calendar;
-
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         
@@ -63,7 +62,8 @@
             console.log(info.event._def);
             //publicId
             //extendedProps.created
-            location.href = "/diary/getDiaries?=";  //여기서 show_detail로 result를 보내야하는데...
+            var hiddate = info.event._def.extendedProps.created;
+            location.href = "/diary/getDiaries?hiddate=" + hiddate;  //여기서 show_detail로 result를 보내야하는데...
             //diary/getDiaries로 created 어떻게 보낼건지도
           }
           
@@ -92,12 +92,11 @@
             url : '/diary/getCalDates',
             data : {month : month},
             success : function(jsons){
-              // console.log(jsons.datas);
+              console.log(jsons.datas);
               for(var i=0; i<jsons.datas.length; i++){
                 calendar.addEvent({
-                  // title:jsons.datas[i].description1,
                   title:'감사일기 확인',
-                  id:jsons.datas[i].idx,
+                  // id:jsons.datas[i].idx,
                   created:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
                   start:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
                   allDay: true,

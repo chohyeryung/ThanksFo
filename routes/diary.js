@@ -40,35 +40,27 @@ router.post('/insert_process', function(request, response){
     });
 });
 
+router.get('/getDiaryDates', function(request, response){
+    response.render('show_cal.ejs');
+});
+
 router.post('/getCalDates', function(request, response){
     var month = request.body.month;
+    let uid=request.session.user.idx;
     // const query = `SELECT DATE_FORMAT(created, '%c') FROM thdiary`;
-    const query = `SELECT * FROM thdiary WHERE DATE_FORMAT(created, '%c') = ?`;
-    db.query(query, [month], function(error, results){
+    const query = `SELECT DISTINCT DATE_FORMAT(created, '%Y-%m-%d') as created FROM thdiary WHERE DATE_FORMAT(created, '%c') = ? and user_id=?`;
+    db.query(query, [month, uid], function(error, created){
         if(error) {
             throw error;
         }
         
-        response.json({'datas' : results});
-        // console.log(results);
-    });
-});
-
-router.get('/getDiaryDates', function(request, response){
-    const query = `SELECT DATE_FORMAT(created, '%Y-%m-%d') as date FROM thdiary WHERE user_id=? GROUP BY DATE_FORMAT(created, '%Y-%m-%d')`;
-    let uid=request.session.user.idx;
-    db.query(query, [uid], function(error, diarys){
-        if (error) {
-            throw error;
-        }
-        // response.render('show.ejs', {result : diarys});
-        response.render('show_cal.ejs');
+        response.json({'datas' : created});
     });
 });
 
 router.get('/getDiaries', function(request, response){
-    var queryData = url.parse(request.url, true).query;
-    console.log(queryData);
+    // var queryData = url.parse(request.url, true).query;
+    // console.log(queryData);
     let date=request.query.hiddate;
     const query = `SELECT * FROM thdiary WHERE created LIKE '${date}%'`;
     db.query(query, function(error, detail_diary){
