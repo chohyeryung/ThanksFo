@@ -47,7 +47,6 @@ router.get('/getDiaryDates', function(request, response){
 router.post('/getCalDates', function(request, response){
     var month = request.body.month;
     let uid=request.session.user.idx;
-    // const query = `SELECT DATE_FORMAT(created, '%c') FROM thdiary`;
     const query = `SELECT DISTINCT DATE_FORMAT(created, '%Y-%m-%d') as created FROM thdiary WHERE DATE_FORMAT(created, '%c') = ? and user_id=?`;
     db.query(query, [month, uid], function(error, created){
         if(error) {
@@ -59,8 +58,6 @@ router.post('/getCalDates', function(request, response){
 });
 
 router.get('/getDiaries', function(request, response){
-    // var queryData = url.parse(request.url, true).query;
-    // console.log(queryData);
     let date=request.query.hiddate;
     const query = `SELECT * FROM thdiary WHERE created LIKE '${date}%'`;
     db.query(query, function(error, detail_diary){
@@ -108,7 +105,6 @@ router.post('/delete', function(request, response){
             throw error;
         }
         response.redirect('/getDiaryDates');
-        // response.redirect('/home');
     });
 });
 
