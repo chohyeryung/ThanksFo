@@ -1,4 +1,12 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 body{
+    font-family: 'UhBeeSe_hyun';
     background-image: url('../images/bg.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -12,10 +20,10 @@ body{
     display: inline-block;
     flex-direction: row;
     width: 580px;
-    height: 260px;
+    height: 265px;
     margin:30px;
     position:relative;
-    padding:50px;
+    padding:30px;
     padding-left:80px;
 }
 
@@ -30,7 +38,7 @@ body{
 
 .contents{
     position:relative;
-    top:-30px;
+    top:-50px;
 }
 
 .contents .show{

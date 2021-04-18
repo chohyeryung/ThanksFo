@@ -16,7 +16,7 @@
           selectable: true,
           initialView: 'dayGridMonth',
           headerToolbar: {
-            start: "",
+            start: "home",
             center: "prev title next",
             end: "today",
           },
@@ -55,6 +55,12 @@
                 var date = calendar.getDate();
                 var month = date.getMonth() + 1;
                 getDates(month);
+              }
+            },
+            home:{
+              text:'홈으로',
+              click:function() {
+                location.href = "/home";
               }
             }
           },

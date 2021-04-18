@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: lighter;
+    font-style: lighter;
+  }
+
+
+body{
+    font-family: 'UhBeeSe_hyun';
+}
+
 .fc-toolbar-chunk {
     display: flex;
     align-items: center;

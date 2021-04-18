@@ -1,13 +1,13 @@
 @font-face {
-    font-family: 'DungGeunMo';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
     font-weight: normal;
     font-style: normal;
   }
 
 .container{
     text-align: center;
-    font-family: 'DungGeunMo';
+    font-family: 'UhBeeSe_hyun';
     margin-top:80px;
 }
 
@@ -26,14 +26,23 @@
     background-color:#ccbeac;
 }
 
+::placeholder { 
+    font-size: 13px !important;
+    font-family: 'UhBeeSe_hyun';
+  }
+
 .submit{
     border:none;
     width: 200px;
     height: 78px;
     border-radius: 50px;
     background: #A29077 0% 0% no-repeat padding-box;
-    font-family: 'DungGeunMo';
-    font-size:20px;
+    font-family: 'UhBeeSe_hyun';
+    font-size:17px;
     color:white;
     margin-top:50px;
+}
+
+h4{
+    font-weight: normal;
 }

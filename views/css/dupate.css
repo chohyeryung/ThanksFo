@@ -1,5 +1,13 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 .container{
     display: flex;
+    font-family: 'UhBeeSe_hyun';
     flex-direction: column;
 }
 
@@ -20,6 +28,7 @@
 
 ::placeholder { 
     font-size: 15px !important;
+    font-family: 'UhBeeSe_hyun';
   }
 
 .thk_form textarea{
@@ -43,6 +52,7 @@
     left:50%;
     top:100%;
     transform:translate(-50%, -50%); 
+    font-family: 'UhBeeSe_hyun';
 }
 
 .im-con h1{

@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'DungGeunMo';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
     font-weight: normal;
     font-style: normal;
   }
@@ -18,7 +18,8 @@ body{
 }
 
 .nav-container{
-    font-family: 'DungGeunMo';
+    font-family: 'UhBeeSe_hyun';
+  
     display:flex;
     position: absolute;
     font-size: 18px;
@@ -33,7 +34,7 @@ body{
 .nav-container .diary{
     text-decoration: none;
     color:rgb(136, 109, 91);
-    font-weight: bold;
+    font-weight: normal;
 }
 
 a{
@@ -51,5 +52,6 @@ a{
 .min-con{
     width:180px;
     display: flex;
+    font-weight: normal;
     justify-content: space-between;
 }

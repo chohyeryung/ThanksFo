@@ -1,6 +1,14 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 body{
     width:100%;
     margin:0;
+    font-family: 'UhBeeSe_hyun';
 }
 
 .container{
