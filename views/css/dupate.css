@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.container{
+    display: flex;
+    font-family: 'UhBeeSe_hyun';
+    flex-direction: column;
+}
+
+.thk_form{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%); 
+}
+
+.thk_form textarea, input{
+    width:350px;
+    height:60px;
+    margin:10px;
+}
+
+::placeholder { 
+    font-size: 15px !important;
+    font-family: 'UhBeeSe_hyun';
+  }
+
+.thk_form textarea{
+    border-radius: 20px;
+    font-size:17px;
+    border: 1px solid #85755F;
+}
+
+.thk_form .thk{
+    padding:20px;
+}
+
+.thk_form .submit{
+    width:250px;
+    margin-top:60px;
+    border-radius: 30px;
+    border:none;
+    color:white;
+    background-color: #85755F;
+    position:absolute;
+    left:50%;
+    top:100%;
+    transform:translate(-50%, -50%); 
+    font-family: 'UhBeeSe_hyun';
+}
+
+.im-con h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    margin-top:-20px;
+    display:inline-block;
+    color:#85755F;
+}
+
+.go-info{
+    background-color: #85755F;
+    width: 180px;
+    height: 70px;
+    display:inline-block;
+    text-align: center;
+    line-height: 70px;
+    margin-top:40px;
+    color:white;
+    text-decoration: none;
+}

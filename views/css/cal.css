@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: lighter;
+    font-style: lighter;
+  }
+
+
+body{
+    font-family: 'UhBeeSe_hyun';
+}
+
+.fc-toolbar-chunk {
+    display: flex;
+    align-items: center;
+}
+  
+.fc-day-sun{
+    color:red;
+}
+
+.fc-day-sat{
+    color:rgb(22, 22, 209);
+}
+
+.fc .fc-button-primary{
+    background-color:#85755F;
+    border-color: #85755F;
+}
+
+.fc .fc-button-primary:hover{
+    background-color:white;
+    color:#85755F;
+    border-color: #85755F;
+}
+
+.fc .fc-button-primary:disabled{
+    cursor: pointer;
+    background-color:#85755F;
+    color:black;
+    border-color: #85755F;
+}

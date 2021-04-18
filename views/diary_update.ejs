@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dupate.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/diary/update_process" method="POST" class="thk_form">
+            <input type="hidden" value="<%= result[0].idx %>" name="d_idx">
+            <textarea name="d1" cols="25" rows="5" required placeholder="<%= result[0].description1 %>" class="thk one"></textarea><br>
+            <textarea name="d2" cols="25" rows="5" required placeholder="<%= result[0].description2 %>" class="thk two"></textarea><br>
+            <textarea name="d3" cols="25" rows="5" required placeholder="<%= result[0].description3 %>" class="thk three"></textarea><br>
+            <textarea name="tome" cols="25" rows="5" required placeholder=" <%= result[0].tome %> " class="thk three"></textarea><br>
+            <input type="submit" class="submit" value="감사 적립">
+        </form>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body{
+    font-family: 'UhBeeSe_hyun';
+    background-image: url('../images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.show-con{
+    background-image:url('/images/thxDaily_bg.png');
+    background-repeat: no-repeat;
+    list-style-type: none;
+    background-size: contain;
+    display: inline-block;
+    flex-direction: row;
+    width: 580px;
+    height: 265px;
+    margin:30px;
+    position:relative;
+    padding:30px;
+    padding-left:80px;
+}
+
+.show-con a{
+    text-decoration: none;
+    color:black;
+}
+
+.date{
+    color: #85755F;
+}
+
+.contents{
+    position:relative;
+    top:-50px;
+}
+
+.contents .show{
+    padding-left:10px;
+}
+
+h3{
+    display:inline-block;
+}
+
+.tome{
+    font-size: 16px;
+    font-weight: bold;
+    margin:0;
+    margin-left:-10px;
+    color:#85755F;
+}
+
+.menu-ul{
+    list-style-type: none;
+    display:flex;
+    position:relative;
+    right:-400px;
+    top:-40px;
+}
+
+.menu-ul form{
+    width:50px;
+}
+
+.update-submit, .delete-submit{
+    position:relative;
+    top:-20px;
+    opacity: 0;
+    cursor: pointer;
+}

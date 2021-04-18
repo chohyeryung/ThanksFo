@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'UhBeeSe_hyun';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body{
+    width:100%;
+    margin:0;
+    font-family: 'UhBeeSe_hyun';
+}
+
+.container{
+    position:relative;
+}
+
+.join_form{
+    position:absolute;
+    right:20%;
+    width:400px;
+}
+
+.join_form input{
+    display:block;
+    margin-top:20px;
+    width:100%;
+    height:60px;
+    padding:0;
+}
+
+.join_form .join{
+    padding-left:20px;
+}
+
+.join_form .join_btn{
+    border-radius:50px;
+    border:none;
+    height:70px;
+    margin-top:50px;
+    width:105%;
+}
