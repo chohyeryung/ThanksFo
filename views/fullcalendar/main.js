@@ -4070,7 +4070,7 @@ var FullCalendar = (function (exports) {
             prevYear: 'prev year',
             nextYear: 'next year',
             year: 'year',
-            today: 'today',
+            today: '오늘',
             month: 'month',
             week: 'week',
             day: 'day',

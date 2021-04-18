@@ -8,9 +8,23 @@
 }
 
 .fc-day-sat{
-    color:darkblue;
+    color:rgb(22, 22, 209);
 }
-/* .event-icon{
-    width:24px;
-} */
-  
+
+.fc .fc-button-primary{
+    background-color:#85755F;
+    border-color: #85755F;
+}
+
+.fc .fc-button-primary:hover{
+    background-color:white;
+    color:#85755F;
+    border-color: #85755F;
+}
+
+.fc .fc-button-primary:disabled{
+    cursor: pointer;
+    background-color:#85755F;
+    color:black;
+    border-color: #85755F;
+}

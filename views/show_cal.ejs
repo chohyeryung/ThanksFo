@@ -30,7 +30,7 @@
             return weekList[date.dow];
           },
           dateClick: function(dateClickInfo) {
-            const gray="#a3a3a3";
+            const gray="#85755F";
 
             if(dateClickInfo.dayEl.style.backgroundColor) {
               dateClickInfo.dayEl.style.backgroundColor = "";
@@ -68,7 +68,6 @@
 
       });
       
-
       window.onload = function () {
         $(window).trigger('DOMContentLoaded');
         getDates(new Date().getMonth()+1);
@@ -85,11 +84,11 @@
             console.log(jsons.datas);
             for(var i=0; i<jsons.datas.length; i++){
               calendar.addEvent({
-                title:'감사일기 확인',
+                title:'감사일기',
                 created:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
                 start:moment(jsons.datas[i].created).format('YYYY-MM-DD'),
                 allDay: true,
-                color:'green',
+                color:'#85755F',
                 end:moment(jsons.datas[i].created).format('YYYY-MM-DD')
               });
             }
