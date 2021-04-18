@@ -60,11 +60,14 @@ router.post('/getCalDates', function(request, response){
 router.get('/getDiaries', function(request, response){
     let date=request.query.hiddate;
     const query = `SELECT * FROM thdiary WHERE created LIKE '${date}%'`;
+    const getDate = `SELECT DATE_FORMAT(created, '%Y.%m.%d') as created FROM thdiary WHERE created LIKE '${date}%'`;
     db.query(query, function(error, detail_diary){
         if (error) {
             throw error;
         }
-        response.render('show_detail.ejs', {result : detail_diary});
+        db.query(getDate, function(error2, get_date) {
+            response.render('show_detail.ejs', {result : detail_diary, created : get_date[0].created});
+        });
     });
 })
 

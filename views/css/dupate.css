@@ -1,8 +1,15 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
 .thk_form{
     display: flex;
     flex-direction: column;
-    width:400px;
-    margin: 0 auto;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%); 
 }
 
 .thk_form textarea, input{
@@ -18,6 +25,7 @@
 .thk_form textarea{
     border-radius: 20px;
     font-size:17px;
+    border: 1px solid #85755F;
 }
 
 .thk_form .thk{
@@ -25,6 +33,37 @@
 }
 
 .thk_form .submit{
-    width:375px;
+    width:250px;
     margin-top:60px;
+    border-radius: 30px;
+    border:none;
+    color:white;
+    background-color: #85755F;
+    position:absolute;
+    left:50%;
+    top:100%;
+    transform:translate(-50%, -50%); 
+}
+
+.im-con h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    margin-top:-20px;
+    display:inline-block;
+    color:#85755F;
+}
+
+.go-info{
+    background-color: #85755F;
+    width: 180px;
+    height: 70px;
+    display:inline-block;
+    text-align: center;
+    line-height: 70px;
+    margin-top:40px;
+    color:white;
+    text-decoration: none;
 }

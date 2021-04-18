@@ -1,12 +1,22 @@
+body{
+    background-image: url('../images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .show-con{
+    background-image:url('/images/thxDaily_bg.png');
+    background-repeat: no-repeat;
     list-style-type: none;
-    background-color:beige;
+    background-size: contain;
     display: inline-block;
     flex-direction: row;
-    width:300px;
-    height:300px;
+    width: 580px;
+    height: 260px;
     margin:30px;
     position:relative;
+    padding:50px;
+    padding-left:80px;
 }
 
 .show-con a{
@@ -14,33 +24,40 @@
     color:black;
 }
 
-.show{
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    margin-top:50px;
+.date{
+    color: #85755F;
 }
 
-.show-con .tome{
-    margin-top:10px;
-    font-size: 20px;
+.contents{
+    position:relative;
+    top:-30px;
+}
+
+.contents .show{
+    padding-left:10px;
+}
+
+h3{
+    display:inline-block;
+}
+
+.tome{
+    font-size: 16px;
     font-weight: bold;
+    margin:0;
+    margin-left:-10px;
+    color:#85755F;
 }
 
-.show-menu{
+.menu-ul{
     list-style-type: none;
     display:flex;
     position:relative;
-    justify-content: space-evenly;
-    right:-170px;
-    top:20px;
-    width:80px;
+    right:-400px;
+    top:-40px;
 }
 
-.show-menu form{
+.menu-ul form{
     width:50px;
 }
 

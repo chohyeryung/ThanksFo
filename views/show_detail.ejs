@@ -12,34 +12,36 @@
     <% if(result!=null && result.length > 0) { %>
             <% for(var i=0; i<result.length; i++) { %>
                 <ul class="show-con">
-                    <li>
-                        <ul class="show-menu">
-                            <form action="/diary/update" method="POST">
-                                <i class="fas fa-pencil-alt"></i>
-                                <input type="hidden" value="<%= result[i].idx %>" name="d_idx">
-                                <input type="submit" class="update-submit">
-                            </form>
-                            <form action="/diary/delete" method="POST">
-                                <i class="far fa-calendar-times"></i>
-                                <input type="hidden" value="<%= result[i].idx %>" name="d_idx">
-                                <input type="submit" class="delete-submit">
-                            </form>
-                        </ul>
-                    </li>
-                    <div class="show">
-                        <li>
-                            <%= result[i].description1 %>
-                        </li><br>
-                        <li>
-                            <%= result[i].description2 %>
-                        </li><br>
-                        <li>
-                            <%= result[i].description3 %>
-                        </li><br>
-                        <li class="tome">
+                    <h3 class="date"><%= created %></h3>
+                    <ul class="menu-ul">
+                        <form action="/diary/update" method="POST">
+                            <i class="fas fa-pencil-alt"></i>
+                            <input type="hidden" value="<%= result[i].idx %>" name="d_idx">
+                            <input type="submit" class="update-submit">
+                        </form>
+                        <form action="/diary/delete" method="POST">
+                            <i class="far fa-calendar-times"></i>
+                            <input type="hidden" value="<%= result[i].idx %>" name="d_idx">
+                            <input type="submit" class="delete-submit">
+                        </form>
+                    </ul>
+                    <div class="contents">
+                        <ol class="show">
+                            <li>
+                                <%= result[i].description1 %>
+                            </li><br>
+                            <li>
+                                <%= result[i].description2 %>
+                            </li><br>
+                            <li>
+                                <%= result[i].description3 %>
+                            </li><br>
+                        </ol>
+                        <h4 class="tome">
                             <%= result[i].tome %>
-                        </li><br>
+                        </h4><br>
                     </div>
+                    
                 </ul>
             <% } %>
     <% }else{ 
