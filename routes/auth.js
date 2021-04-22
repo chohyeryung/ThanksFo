@@ -29,7 +29,6 @@ router.use(bodyParser.urlencoded({ extended: false }))
 
 /* 회원가입 페이지로 이동 (join.ejs) */
 router.get('/join', function(request, response) {
-    // response.sendFile(path.join(__dirname, 'views', 'join.html'));
     response.render('join.ejs');
 });
 
@@ -67,7 +66,7 @@ router.post('/login_process', function(request, response){
                  "failed": "error ocurred"
              })
          }
-        if(users.length > 0) {    //그 이메일로 된 pw가 있다는 것
+        if(users.length > 0) {   
             let user = users[0];
             if(user.password == password) {
                 if(chk){
@@ -75,7 +74,6 @@ router.post('/login_process', function(request, response){
                     // #. 60 * 1초= 60초 = 1분
                     // #. 1분 * 60 = 60분 = 1시간
                     response.cookie('loginId', user.idx, {maxAge : 60*60*1000});
-                    
                     request.session.user=user;
                     request.session.save(()=>{
                         response.redirect('/home');
