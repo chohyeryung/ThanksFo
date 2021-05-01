@@ -9,23 +9,31 @@ body{
     background-image: url('../images/bg.png');
     background-repeat: no-repeat;
     background-size: cover;
+    margin:0;
+}
+
+header{
+    background-color: white;
+    padding-left:300px;
+    position:relative;
 }
 
 .logo{
-    width:100px;
-    height:100px;
+    width:90px;
+    height:40px;
     margin:20px;
 }
 
 .nav-container{
     font-family: 'UhBeeSe_hyun';
-  
     display:flex;
     position: absolute;
     font-size: 18px;
-    right:10%;
-    top:5%;
+    top: 50%;
+    transform: translate(0, -50%);
+    right:300px;
     justify-content: space-between;
+    width:400px;
 }
 .nav-container .menu{
     margin:0;
@@ -40,18 +48,4 @@ body{
 a{
     text-decoration: none;
     color:rgb(136, 109, 91);
-}
-
-.menu-con{
-    margin-right:180px;
-    width:220px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.min-con{
-    width:180px;
-    display: flex;
-    font-weight: normal;
-    justify-content: space-between;
 }
