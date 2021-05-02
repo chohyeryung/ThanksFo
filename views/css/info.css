@@ -16,6 +16,7 @@ body{
     background-attachment: fixed;  
     background-size: cover;
     font-family: 'UhBeeSe_hyun';
+    padding-top:50px;
 }
 
 .container{
@@ -23,7 +24,7 @@ body{
 }
 
 .container .one{
-    margin-top:200px;
+    margin-top:150px;
     margin-left:350px;
     display:inline-block;
     background-image:url('/images/thxEx_textBg01.png');
